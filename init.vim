@@ -1,6 +1,4 @@
-" set runtimepath^=~/.vim runtimepath+=~/.vim/after
-" let &packpath = &runtimepath
-" source ~/.vimrc
+" Entry point for .vimrc, add plugins and source other settings from here
 
 call plug#begin(stdpath('data').'/plugged')
     " Color scheme
@@ -31,6 +29,15 @@ call plug#begin(stdpath('data').'/plugged')
 
     " Org-mode in Vim
     Plug 'vimwiki/vimwiki'
+
+    " YouCompleteMe for semantic completion etc
+    Plug 'Valloric/YouCompleteMe'
+
+    " C++ syntax highlighting
+    Plug 'octol/vim-cpp-enhanced-highlight'
+
+    " Workspace manager
+    Plug 'vim-ctrlspace/vim-ctrlspace'
 
 call plug#end()
 

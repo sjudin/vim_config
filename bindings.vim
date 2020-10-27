@@ -11,3 +11,5 @@ nnoremap <C-s> :so $NVIMRC<CR>
 nnoremap H Hzz
 nnoremap L Lzz
 
+" Clear search
+nnoremap <esc> :noh<return><esc>

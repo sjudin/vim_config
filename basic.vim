@@ -8,7 +8,17 @@ set nowrap
 set formatoptions=cq
 set mouse=n
 set ls=2
-set cmdheight=2
+
+" More space for cmd (bottom of screen)
+set cmdheight=1
+
+" Horizontal cursor line
+set cursorline
+
+" Searching
+set ignorecase
+set smartcase
+set hlsearch
 
 " Rendering
 set ttyfast
@@ -49,3 +59,11 @@ colorscheme gruvbox
 " Read project local .vimrc files
 set exrc
 set secure
+
+" Return to last edit position when opening files
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+" Remember info about open buffers on close
+set viminfo^=%
