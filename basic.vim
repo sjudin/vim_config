@@ -8,12 +8,13 @@ set nowrap
 set formatoptions=cq
 set mouse=n
 set ls=2
+set iskeyword-=_
 
 " More space for cmd (bottom of screen)
 set cmdheight=1
 
 " Horizontal cursor line
-set cursorline
+" set cursorline
 
 " Searching
 set ignorecase

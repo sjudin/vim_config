@@ -10,6 +10,13 @@ call plug#begin(stdpath('data').'/plugged')
     " Smooth scrolling
     Plug 'psliwka/vim-smoothie'
 
+    " LSP client
+    Plug 'prabirshrestha/vim-lsp'
+    " C++ syntax
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
+    " Python syntax
+    Plug 'vim-python/python-syntax'
+
     " Airline
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
