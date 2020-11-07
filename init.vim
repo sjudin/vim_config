@@ -10,8 +10,8 @@ call plug#begin(stdpath('data').'/plugged')
     " Smooth scrolling
     Plug 'psliwka/vim-smoothie'
 
-    " LSP client
-    Plug 'prabirshrestha/vim-lsp'
+    " Coc for semantic completion etc
+    Plug 'neoclide/coc.nvim'
     " C++ syntax
     Plug 'jackguo380/vim-lsp-cxx-highlight'
     " Python syntax
@@ -42,9 +42,6 @@ call plug#begin(stdpath('data').'/plugged')
 
     " Org-mode in Vim
     Plug 'vimwiki/vimwiki'
-
-    " YouCompleteMe for semantic completion etc
-    Plug 'Valloric/YouCompleteMe'
 
     " C++ syntax highlighting
     Plug 'octol/vim-cpp-enhanced-highlight'
