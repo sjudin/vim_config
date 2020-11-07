@@ -26,6 +26,12 @@ nmap <leader>gp :diffput<CR>
 " Discard hunk under cursor
 nmap <leader>gg :diffget<CR>
 
+" ########################
+" ###### Smoothie ########
+" ########################
+nnoremap <silent> H :call smoothie#upwards()<CR>
+nnoremap <silent> L :call smoothie#downwards()<CR>
+
 
 " #######################
 " ##### Quickscope ######

@@ -8,8 +8,8 @@ nnoremap k gk
 nnoremap <C-s> :so $NVIMRC<CR>
 
 " Recenter on jump with L and H
-nnoremap H Hzz
-nnoremap L Lzz
+" nnoremap H Hzz
+" nnoremap L Lzz
 
 " Clear search
-nnoremap <esc> :noh<return><esc>
+nnoremap <silent> <esc> :noh<return><esc>

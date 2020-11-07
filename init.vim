@@ -6,6 +6,9 @@ call plug#begin(stdpath('data').'/plugged')
 
     " Quickscope (Horizontal movement)
     Plug 'unblevable/quick-scope'
+    
+    " Smooth scrolling
+    Plug 'psliwka/vim-smoothie'
 
     " Airline
     Plug 'vim-airline/vim-airline'
