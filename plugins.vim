@@ -27,6 +27,13 @@ nmap <leader>gp :diffput<CR>
 nmap <leader>gg :diffget<CR>
 
 
+" #######################
+" ##### Quickscope ######
+" #######################
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_max_chars=120
+
+
 " ####################
 " ####### Fzf ########
 " ####################
@@ -74,6 +81,22 @@ else
     let g:webdevicons_enable = 0
 
 endif
+
+" #########################
+" ###### Vimspector #######
+" #########################
+" Starting and stopping debugger
+nnoremap <leader>dd :call vimspector#Launch()<CR>
+nnoremap <leader>de :call vimspector#Reset()<CR>
+
+nmap <leader>dc <Plug>VimspectorContinue
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dj <Plug>VimspectorStepOver
+nmap <leader>dk <Plug>VimspectorStepOut
+nmap <leader>d_ <Plug>VimspectorRestart
+nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
+
+nmap <leader>drc <Plug>VimspectorRunToCursor
 
 
 " ########################

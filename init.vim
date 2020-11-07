@@ -4,6 +4,9 @@ call plug#begin(stdpath('data').'/plugged')
     " Color scheme
     Plug 'morhetz/gruvbox'
 
+    " Quickscope (Horizontal movement)
+    Plug 'unblevable/quick-scope'
+
     " Airline
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
