@@ -180,34 +180,17 @@ nnoremap <leader>ww :vsplit<CR>:VimwikiIndex<CR>
 " #######################
 " ##### C++ Syntax ######
 " #######################
-if executable('ccls')
-   au User lsp_setup call lsp#register_server({
-      \ 'name': 'ccls',
-      \ 'cmd': {server_info->['ccls']},
-      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-      \ 'initialization_options': {
-      \   'highlight': { 'lsRanges' : v:true },
-      \ },
-      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-      \ })
-endif
-" c++ syntax highlighting
+
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+" Do not gray out macros
+highlight clear LspCxxHlSkippedRegion "ctermfg=DarkGray guifg=DarkGray
 
 " #######################
 " #### Python Syntax ####
 " #######################
 let g:python_highlight_all = 1
-
-" ######################
-" ###### vim-LSP #######
-" ######################
-let g:lsp_diagnostics_enabled = 0      " disable diagnostics support
-let g:lsp_signs_enabled = 0            " enable signs
-let g:lsp_diagnostics_echo_cursor = 0  " enable echo under cursor when in normal mode
-
 
 " #########################
 " ###### CtrlSpace ########
