@@ -4,6 +4,19 @@ call plug#begin(stdpath('data').'/plugged')
     " Color scheme
     Plug 'morhetz/gruvbox'
 
+    " Quickscope (Horizontal movement)
+    Plug 'unblevable/quick-scope'
+    
+    " Smooth scrolling
+    Plug 'psliwka/vim-smoothie'
+
+    " Coc for semantic completion etc
+    Plug 'neoclide/coc.nvim'
+    " C++ syntax
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
+    " Python syntax
+    Plug 'vim-python/python-syntax'
+
     " Airline
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -29,9 +42,6 @@ call plug#begin(stdpath('data').'/plugged')
 
     " Org-mode in Vim
     Plug 'vimwiki/vimwiki'
-
-    " YouCompleteMe for semantic completion etc
-    Plug 'Valloric/YouCompleteMe'
 
     " C++ syntax highlighting
     Plug 'octol/vim-cpp-enhanced-highlight'

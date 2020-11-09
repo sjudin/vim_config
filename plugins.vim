@@ -6,6 +6,65 @@
 let fancy_symbols_enabled = 1
 
 " #####################
+" ######## Coc ########
+" #####################
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+
+" #####################
 " ##### Nerdtree ######
 " #####################
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -25,6 +84,19 @@ nmap <leader>gf :diffget //2<CR>
 nmap <leader>gp :diffput<CR>
 " Discard hunk under cursor
 nmap <leader>gg :diffget<CR>
+
+" ########################
+" ###### Smoothie ########
+" ########################
+nnoremap <silent> H :call smoothie#upwards()<CR>
+nnoremap <silent> L :call smoothie#downwards()<CR>
+
+
+" #######################
+" ##### Quickscope ######
+" #######################
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_max_chars=120
 
 
 " ####################
@@ -75,6 +147,22 @@ else
 
 endif
 
+" #########################
+" ###### Vimspector #######
+" #########################
+" Starting and stopping debugger
+nnoremap <leader>dd :call vimspector#Launch()<CR>
+nnoremap <leader>de :call vimspector#Reset()<CR>
+
+nmap <leader>dc <Plug>VimspectorContinue
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dj <Plug>VimspectorStepOver
+nmap <leader>dk <Plug>VimspectorStepOut
+nmap <leader>d_ <Plug>VimspectorRestart
+nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
+
+nmap <leader>drc <Plug>VimspectorRunToCursor
+
 
 " ########################
 " ####### Rainbow ########
@@ -92,11 +180,17 @@ nnoremap <leader>ww :vsplit<CR>:VimwikiIndex<CR>
 " #######################
 " ##### C++ Syntax ######
 " #######################
-let g:cpp_member_variable_highlight = 1
+
 let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_simple_template_highlight = 1
-let g:cpp_posix_standard = 1
+" Do not gray out macros
+highlight clear LspCxxHlSkippedRegion "ctermfg=DarkGray guifg=DarkGray
+
+" #######################
+" #### Python Syntax ####
+" #######################
+let g:python_highlight_all = 1
 
 " ############################
 " ####### YouCompleteMe ######
