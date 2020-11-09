@@ -98,7 +98,23 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_posix_standard = 1
 
-" #########################
-" ###### CtrlSpace ########
-" #########################
-nnoremap <Leader>pp :CtrlSpace<CR>
+" ############################
+" ####### YouCompleteMe ######
+" ############################ 
+" let g:ycm_clangd_args=['--header-insertion=never']
+" Keybindings for goodness
+" nnoremap gd :YcmCompleter GoToDefinition<CR>
+" nnoremap gi :YcmCompleter GoToInclude<CR>
+" nnoremap gr :YcmCompleter GoToReferences<CR>
+" nnoremap go :YcmCompleter GetDoc<CR>
+
+" ##########################
+" ####### ProSession #######
+" ##########################
+let g:prosession_dir = '~/.config/nvim/session/'
+" Dont create sessions in each folder we open
+let g:prosession_on_startup = 0
+" Need this in order for tab completion to work
+set wildcharm=<tab>
+nnoremap <Leader>pp :Prosession <tab>
+

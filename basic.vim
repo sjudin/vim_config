@@ -8,6 +8,7 @@ set nowrap
 set formatoptions=cq
 set mouse=n
 set ls=2
+set noswapfile
 
 " More space for cmd (bottom of screen)
 set cmdheight=1
@@ -67,3 +68,6 @@ autocmd BufReadPost *
      \ endif
 " Remember info about open buffers on close
 set viminfo^=%
+
+au BufEnter *.py let &makeprg='venv/bin/python -m unittest discover -v'
+au BufEnter *.cpp,*.h let &makeprg='cd build && cmake .. && make -j4'

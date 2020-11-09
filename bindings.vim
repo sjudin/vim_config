@@ -13,3 +13,6 @@ nnoremap L Lzz
 
 " Clear search
 nnoremap <esc> :noh<return><esc>
+
+" Keep escape behaviour in terminal
+:tnoremap <Esc> <C-\><C-n>

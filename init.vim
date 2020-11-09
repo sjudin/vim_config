@@ -36,8 +36,12 @@ call plug#begin(stdpath('data').'/plugged')
     " C++ syntax highlighting
     Plug 'octol/vim-cpp-enhanced-highlight'
 
-    " Workspace manager
-    Plug 'vim-ctrlspace/vim-ctrlspace'
+    " Testing a new workspace manager
+    Plug 'tpope/vim-obsession'
+    Plug 'dhruvasagar/vim-prosession'
+
+    " Debugging
+    Plug 'puremourning/vimspector'
 
 call plug#end()
 
