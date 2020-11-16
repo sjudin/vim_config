@@ -44,9 +44,9 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'vimwiki/vimwiki'
 
     " C++ syntax highlighting
-    Plug 'octol/vim-cpp-enhanced-highlight'
+    " Plug 'octol/vim-cpp-enhanced-highlight'
 
-    " Testing a new workspace manager
+    " Prosession for workspace management. Obsession as dependency
     Plug 'tpope/vim-obsession'
     Plug 'dhruvasagar/vim-prosession'
 

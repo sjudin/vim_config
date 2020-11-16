@@ -5,6 +5,14 @@
 " airline
 let fancy_symbols_enabled = 1
 
+" #############################
+" ##### Gruvbox babyyyyyy #####
+" #############################
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_strings=1
+let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_termcolors=16
+
 " #####################
 " ######## Coc ########
 " #####################
@@ -44,8 +52,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" GoTo header from coc-clangd
+nmap <silent> gi :CocCommand clangd.switchSourceHeader<CR>
+nmap <silent> go :CocCommand clangd.symbolInfo<CR>
 
 
 " Use K to show documentation in preview window.
@@ -96,7 +107,7 @@ nnoremap <silent> L :call smoothie#downwards()<CR>
 " ##### Quickscope ######
 " #######################
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-let g:qs_max_chars=120
+let g:qs_max_chars=200
 
 
 " ####################

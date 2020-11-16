@@ -54,9 +54,13 @@ set scrolloff=3
 
 " Appearance
 set listchars=tab:▸\ ,eol:¬
-set t_Co=256
+" set t_Co=256
+set termguicolors
 set background=dark
-colorscheme gruvbox
+" Makes sure all plugins are loaded before loading colorscheme
+autocmd vimenter * ++nested colorscheme gruvbox
+" Allows terminal transparency
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 
 " Read project local .vimrc files
 set exrc
