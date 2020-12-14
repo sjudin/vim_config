@@ -19,4 +19,4 @@ nnoremap <C-s> :so $NVIMRC<CR>
 nnoremap <esc> :noh<return><esc>
 
 " Keep escape behaviour in terminal
-:tnoremap <Esc> <C-\><C-n>
+" :tnoremap <Esc> <C-\><C-n>

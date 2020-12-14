@@ -1,0 +1,74 @@
+= Useful keybindings = 
+
+== Fugitive ==
+    * <leader>gs --> :Gstatus
+    * <leader>gp --> :diffput, Stage hunk under cursor
+    * <leader>gg --> :diffget, Discard hunk under cursor
+    * When merging:
+        - <leader>gf --> Merge from left buffer
+        - <leader>gj --> Merge from right buffer
+
+    * dv --> :GDiffSplit on file under cursor
+    * =  --> Show inline diff, similar to magit
+    * X  --> Discard change in file
+    * s  --> stage change in file
+    * u  --> unstage change in file
+== Fzf ==
+    * <leader>ff --> Search file using fzf
+    * <leader>fw --> Search word using fzf
+    * <leader>fb --> Search buffer using fzf
+
+== VimWiki ==
+    * <leader>ww    --> go to VimWiki index in new vertical split
+    * <leader>wt    --> go to VimWiki index in new tab
+    * Enter         --> Follow/create link
+    * Backspace     --> Go back to parent
+    * <Ctrl><space> --> Create/Toggle checkbox
+
+== ProSession ==
+    * Add a session with :Prosession <path/to/project>
+    * Use <Leader>pp and tab completion to switch projects
+
+== coc.nvim ==
+    * gd    --> Go Definition
+    * gi    --> Go to include (header) (from coc.clangd)
+    * gr    --> List references
+    * go    --> Go Doc
+    * <C-o> --> jump back
+    * <C-i> --> jump forward
+
+== VimSpector ==
+    * <leader>dd --> Start the debugger
+    * <leader>de --> Exit the debugger
+    * <leader>drc --> Debug run to cursor
+    * <leader>dbp --> Debug toggle breakpoint
+    * 
+    * <leader>dc --> Debug continue
+    * <leader>dl --> Debug step into
+    * <leader>dj --> Debug step over
+    * <leader>dk --> Debug step out
+    * <leader>d_ --> Debug restart
+
+== Visual Split ==
+    * <C-w>gss split out visual selection
+    * <C-w>gsa split out visual selection above
+    * <C-w>gsb split out visual selection below
+    * <C-w>gr  resize current buffer to visual
+               selection
+
+== Firefox ==
+    * Ctrl-L --> Focus search bar
+
+== Other nice bindings ==
+    === Resizing buffers ===
+        * <C-w>_ --> Give current split all vertical space
+        * <C-w>| --> Give current split all horizontal space
+        * <C-w>= --> Give all buffers equal space (reset layout)
+
+
+= [[TODOs|TODOs]] =
+
+= [[Debugging]] =
+= [[cpp|C++ Workflow]] =
+= [[Python|Python Workflow]] =
+

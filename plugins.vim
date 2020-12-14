@@ -203,16 +203,6 @@ highlight clear LspCxxHlSkippedRegion "ctermfg=DarkGray guifg=DarkGray
 " #######################
 let g:python_highlight_all = 1
 
-" ############################
-" ####### YouCompleteMe ######
-" ############################ 
-" let g:ycm_clangd_args=['--header-insertion=never']
-" Keybindings for goodness
-" nnoremap gd :YcmCompleter GoToDefinition<CR>
-" nnoremap gi :YcmCompleter GoToInclude<CR>
-" nnoremap gr :YcmCompleter GoToReferences<CR>
-" nnoremap go :YcmCompleter GetDoc<CR>
-
 " ##########################
 " ####### ProSession #######
 " ##########################
@@ -223,3 +213,7 @@ let g:prosession_on_startup = 0
 set wildcharm=<tab>
 nnoremap <Leader>pp :Prosession <tab>
 
+" ##########################
+" ######## VimWiki #########
+" ##########################
+let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki'}]

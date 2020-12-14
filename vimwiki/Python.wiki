@@ -1,0 +1,9 @@
+= How to make python nice in Vim =
+
+    == Debugging ==
+        * Check these out:
+            * https://pypi.org/project/pudb/
+            * https://github.com/SkyLeach/pudb.vim
+    
+    == Running unit tests ==
+    

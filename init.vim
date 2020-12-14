@@ -43,8 +43,8 @@ call plug#begin(stdpath('data').'/plugged')
     " Org-mode in Vim
     Plug 'vimwiki/vimwiki'
 
-    " C++ syntax highlighting
-    " Plug 'octol/vim-cpp-enhanced-highlight'
+    " Visual split
+    Plug 'wellle/visual-split.vim'
 
     " Prosession for workspace management. Obsession as dependency
     Plug 'tpope/vim-obsession'
@@ -52,6 +52,14 @@ call plug#begin(stdpath('data').'/plugged')
 
     " Debugging
     Plug 'puremourning/vimspector'
+
+    " Autogenerating documentation
+    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+
+    " Autoclosing parentheses etc
+    Plug 'tpope/vim-endwise'
+    Plug 'rstacruz/vim-closer'
+
 
 call plug#end()
 

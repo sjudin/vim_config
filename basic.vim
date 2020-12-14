@@ -6,6 +6,7 @@ set wildmenu
 set wildmode=longest:full,full
 set nowrap
 set formatoptions=cq
+set formatoptions-=o
 set mouse=n
 set ls=2
 set noswapfile
