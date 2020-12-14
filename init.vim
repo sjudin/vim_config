@@ -16,6 +16,8 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'jackguo380/vim-lsp-cxx-highlight'
     " Python syntax
     Plug 'vim-python/python-syntax'
+    " CMake syntax
+    Plug 'pboettch/vim-cmake-syntax'
 
     " Airline
     Plug 'vim-airline/vim-airline'
@@ -56,10 +58,10 @@ call plug#begin(stdpath('data').'/plugged')
     " Autogenerating documentation
     Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
-    " Autoclosing parentheses etc
-    Plug 'tpope/vim-endwise'
-    Plug 'rstacruz/vim-closer'
+    " Snippets
+    Plug 'honza/vim-snippets'
 
+    Plug 'tpope/vim-dispatch'
 
 call plug#end()
 

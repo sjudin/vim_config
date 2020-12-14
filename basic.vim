@@ -2,7 +2,7 @@
 
 set nocompatible
 set hidden
-set wildmenu
+set wildmenu 
 set wildmode=longest:full,full
 set nowrap
 set formatoptions=cq
@@ -27,6 +27,9 @@ set hlsearch
 set ttyfast
 set lazyredraw
 set updatetime=50
+
+" Matchpairs
+set matchpairs+=<:>
 
 " Filetypes for plugins
 filetype on
@@ -76,4 +79,4 @@ autocmd BufReadPost *
 set viminfo^=%
 
 au BufEnter *.py let &makeprg='venv/bin/python -m unittest discover -v'
-au BufEnter *.cpp,*.h let &makeprg='cd build && cmake .. && make -j4'
+au BufEnter *.cpp,*.h let &makeprg='cd build && cmake -DCMAKE_BUILD_TYPE=debug .. && make'

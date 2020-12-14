@@ -1,4 +1,5 @@
 {
     "clangd.semanticHighlighting": true,
-    "python.pythonPath": "~/Documents/blacknose/venv/bin/python"
+    "python.linting.flake8CategorySeverity.E": "Warning",
+    "python.linting.flake8CategorySeverity.F": "Warning"
 }

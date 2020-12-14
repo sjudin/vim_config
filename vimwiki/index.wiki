@@ -10,9 +10,17 @@
 
     * dv --> :GDiffSplit on file under cursor
     * =  --> Show inline diff, similar to magit
-    * X  --> Discard change in file
-    * s  --> stage change in file
-    * u  --> unstage change in file
+    * These commands can be used for hunks in an inline diff selected using <C-v>
+      but also the whole file from the fugitive status window
+        * X  --> Discard change in file
+        * s  --> stage change in file
+        * u  --> unstage change in file
+    * co<SPACE> --> checkout branch
+    * cb<SPACE> --> :Git branch
+    * Commiting:
+        * cc --> Create commit with the currently added files
+        * ca --> Amend latest commit and edit message
+        * ce --> Amend latest commit without editing message
 == Fzf ==
     * <leader>ff --> Search file using fzf
     * <leader>fw --> Search word using fzf
