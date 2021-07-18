@@ -66,6 +66,9 @@ call plug#begin(stdpath('data').'/plugged')
     " Hop
     Plug 'phaazon/hop.nvim'
 
+    " Scrollbar
+    Plug 'dstein64/nvim-scrollview'
+
 call plug#end()
 
 source ~/.config/nvim/basic.vim
