@@ -41,7 +41,8 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'ryanoasis/vim-devicons'
 
     " Rainbow parentheses
-    Plug 'luochen1990/rainbow'
+    " Plug 'luochen1990/rainbow'
+    Plug 'p00f/nvim-ts-rainbow'
 
     " Org-mode in Vim
     Plug 'vimwiki/vimwiki'
@@ -70,6 +71,9 @@ call plug#begin(stdpath('data').'/plugged')
     " Scrollbar
     Plug 'dstein64/nvim-scrollview'
 
+    " Treesitter
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+    Plug 'nvim-treesitter/playground'
 call plug#end()
 
 source ~/.config/nvim/basic.vim
