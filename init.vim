@@ -15,8 +15,6 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'neoclide/coc.nvim'
     " C++ syntax
     Plug 'jackguo380/vim-lsp-cxx-highlight'
-    " Python syntax
-    Plug 'vim-python/python-syntax'
     " CMake syntax
     Plug 'pboettch/vim-cmake-syntax'
 
@@ -74,6 +72,9 @@ call plug#begin(stdpath('data').'/plugged')
     " Treesitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
     Plug 'nvim-treesitter/playground'
+
+    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
 call plug#end()
 
 source ~/.config/nvim/basic.vim
