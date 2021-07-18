@@ -62,9 +62,15 @@ set listchars=tab:▸\ ,eol:¬
 set termguicolors
 set background=dark
 " Makes sure all plugins are loaded before loading colorscheme
-autocmd vimenter * ++nested colorscheme gruvbox
+" autocmd vimenter * ++nested colorscheme gruvbox-material
+
+let g:airline_theme = 'gruvbox_material'
+let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_palette = 'mix'
+let g:gruvbox_material_transparent_background = 1
+colorscheme gruvbox-material
 " Allows terminal transparency
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 
 " Read project local .vimrc files
 set exrc
