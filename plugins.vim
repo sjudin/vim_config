@@ -215,10 +215,6 @@ nnoremap <leader>ww :vsplit<CR>:VimwikiIndex<CR>
 " #######################
 " ##### C++ Syntax ######
 " #######################
-
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
 " Do not gray out macros
 highlight clear LspCxxHlSkippedRegion "ctermfg=DarkGray guifg=DarkGray
 
@@ -241,3 +237,10 @@ nnoremap <Leader>pp :Prosession <tab>
 " ######## VimWiki #########
 " ##########################
 let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki'}]
+
+" ##########################
+" ########## Hop ###########
+" ##########################
+lua require'hop'.setup()
+nnoremap <silent><leader>hw :HopWord<CR>
+nnoremap <silent><leader>hc :HopChar2<CR>

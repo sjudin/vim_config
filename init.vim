@@ -63,6 +63,9 @@ call plug#begin(stdpath('data').'/plugged')
 
     Plug 'tpope/vim-dispatch'
 
+    " Hop
+    Plug 'phaazon/hop.nvim'
+
 call plug#end()
 
 source ~/.config/nvim/basic.vim
