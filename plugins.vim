@@ -284,6 +284,18 @@ require "nvim-treesitter.configs".setup {
 EOF
 
 " #################################
+" ########## Floatterm ############
+" #################################
+let g:floaterm_autoclose=1
+nnoremap <silent><leader>tpp :FloatermNew venv/bin/python<CR>
+nnoremap <silent><leader>tp :FloatermNew python<CR>
+nnoremap <silent><leader>tr :FloatermNew ranger<CR>
+nnoremap <silent><leader>tt :FloatermToggle<CR>
+tnoremap <silent><leader>tt <c-\><c-n>:FloatermToggle<CR>
+
+hi FloatermNC guibg=gray
+
+" #################################
 " ############ Semshi #############
 " #################################
 function MyCustomHighlights()

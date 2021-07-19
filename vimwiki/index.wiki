@@ -73,6 +73,13 @@
         * <C-w>| --> Give current split all horizontal space
         * <C-w>= --> Give all buffers equal space (reset layout)
 
+== FloaTerm ==
+    * <leader>tpp --> Open floating terminal using venv/bin/python
+    * <leader>tp --> Open floating terminal using python
+    * <leader>tr --> Open ranger in floating terminal
+    * <leader>tt --> Toggle terminal
+    * <leader><ESC> --> Use this to go out of insert mode inside terminal
+
 
 = [[TODOs|TODOs]] =
 

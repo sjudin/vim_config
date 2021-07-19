@@ -73,7 +73,10 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
     Plug 'nvim-treesitter/playground'
 
+    " Python semantic highlighting
     Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+    Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
