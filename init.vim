@@ -40,8 +40,8 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'ryanoasis/vim-devicons'
 
     " Rainbow parentheses
-    " Plug 'luochen1990/rainbow'
-    Plug 'p00f/nvim-ts-rainbow'
+    Plug 'luochen1990/rainbow'
+    " Plug 'p00f/nvim-ts-rainbow'
 
     " Org-mode in Vim
     Plug 'vimwiki/vimwiki'
