@@ -83,8 +83,11 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-au BufEnter *.py let &makeprg='venv/bin/python -m unittest discover -v'
-au BufEnter *.cpp,*.h let &makeprg='cd build && cmake -DCMAKE_BUILD_TYPE=debug .. && make'
+augroup set_make
+    autocmd!
+    au BufEnter *.py let &makeprg='venv/bin/python -m unittest discover -v'
+    au BufEnter *.cpp,*.h let &makeprg='cd build && cmake -DCMAKE_BUILD_TYPE=debug .. && make'
+augroup END
 
 " Visual notification on yank
 augroup highlight_yank
