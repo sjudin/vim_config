@@ -86,3 +86,9 @@ set viminfo^=%
 
 au BufEnter *.py let &makeprg='venv/bin/python -m unittest discover -v'
 au BufEnter *.cpp,*.h let &makeprg='cd build && cmake -DCMAKE_BUILD_TYPE=debug .. && make'
+
+" Visual notification on yank
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 50})
+augroup END
