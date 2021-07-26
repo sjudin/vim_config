@@ -5,13 +5,6 @@
 " airline
 let fancy_symbols_enabled = 1
 
-" #############################
-" ##### Gruvbox babyyyyyy #####
-" #############################
-let g:gruvbox_italic=1
-let g:gruvbox_italicize_strings=1
-let g:gruvbox_contrast_dark = 'hard'
-" let g:gruvbox_termcolors=16
 
 " #####################
 " ######## Coc ########
@@ -320,4 +313,30 @@ augroup set_gruvbox_semshi
     autocmd!
     autocmd FileType python call MyCustomHighlights()
 augroup END
+
+" #############################
+" ##### Gruvbox babyyyyyy #####
+" #############################
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_strings=1
+
+let use_gruvbox_material = 1
+
+if use_gruvbox_material
+    let g:airline_theme = 'gruvbox_material'
+    let g:gruvbox_material_background = 'soft'
+    let g:gruvbox_material_palette = 'mix'
+    let g:gruvbox_material_transparent_background = 1
+    augroup set_gruvbox_material
+        autocmd!
+        autocmd vimenter * ++nested colorscheme gruvbox-material
+    augroup END
+else
+    let g:gruvbox_contrast_dark = 'medium'
+    let g:airline_theme = 'gruvbox'
+    augroup set_gruvbox
+        autocmd!
+        autocmd vimenter * ++nested colorscheme gruvbox
+    augroup END
+endif
 

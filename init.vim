@@ -4,6 +4,7 @@ call plug#begin(stdpath('data').'/plugged')
     " Color scheme
     " Plug 'morhetz/gruvbox'
     Plug 'sainnhe/gruvbox-material'
+    Plug 'gruvbox-community/gruvbox'
 
     " Quickscope (Horizontal movement)
     Plug 'unblevable/quick-scope'
