@@ -20,3 +20,20 @@ nnoremap <esc> :noh<return><esc>
 
 " Keep escape behaviour in terminal
 tnoremap <leader><Esc> <c-\><c-n>                            --for vim
+
+" use Y to copy rest of line (from cursor)
+nnoremap Y y$
+
+" Keep cursor centered on jump
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Undo break points
+inoremap , ,<c-g>u
+inoremap ? ?<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+
+" Moving text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv

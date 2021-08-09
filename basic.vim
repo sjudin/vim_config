@@ -64,11 +64,6 @@ set background=dark
 " Makes sure all plugins are loaded before loading colorscheme
 " autocmd vimenter * ++nested colorscheme gruvbox-material
 
-" Allows terminal transparency
-augroup term-transp
-    autocmd!
-    autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-augroup END
 
 
 " Read project local .vimrc files

@@ -240,8 +240,8 @@ let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki'}]
 " ########## Hop ###########
 " ##########################
 lua require'hop'.setup()
-nnoremap <silent><leader>hw :HopWord<CR>
-nnoremap <silent><leader>hc :HopChar2<CR>
+nnoremap <silent><leader><leader> :HopWord<CR>
+" nnoremap <silent><leader>hc :HopChar2<CR>
 
 
 " #################################
@@ -328,7 +328,7 @@ augroup END
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_strings=1
 
-let use_gruvbox_material = 1
+let use_gruvbox_material = 0
 
 if use_gruvbox_material
     let g:airline_theme = 'gruvbox_material'
@@ -338,6 +338,7 @@ if use_gruvbox_material
     augroup set_gruvbox_material
         autocmd!
         autocmd vimenter * ++nested colorscheme gruvbox-material
+        autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
     augroup END
 else
     let g:gruvbox_contrast_dark = 'medium'
@@ -345,6 +346,7 @@ else
     augroup set_gruvbox
         autocmd!
         autocmd vimenter * ++nested colorscheme gruvbox
+        autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
     augroup END
 endif
 
