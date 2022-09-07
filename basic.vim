@@ -12,6 +12,8 @@ set ls=2
 set noswapfile
 set iskeyword-=_
 
+set completeopt=menuone,noselect
+
 " More space for cmd (bottom of screen)
 set cmdheight=1
 
@@ -63,8 +65,6 @@ set termguicolors
 set background=dark
 " Makes sure all plugins are loaded before loading colorscheme
 " autocmd vimenter * ++nested colorscheme gruvbox-material
-
-
 
 " Read project local .vimrc files
 set exrc

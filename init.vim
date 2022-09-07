@@ -13,9 +13,9 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'psliwka/vim-smoothie'
 
     " Coc for semantic completion etc
-    Plug 'neoclide/coc.nvim'
+    " Plug 'neoclide/coc.nvim'
     " C++ syntax
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
+    " Plug 'jackguo380/vim-lsp-cxx-highlight'
     " CMake syntax
     Plug 'pboettch/vim-cmake-syntax'
 
@@ -40,8 +40,8 @@ call plug#begin(stdpath('data').'/plugged')
     Plug 'ryanoasis/vim-devicons'
 
     " Rainbow parentheses
-    Plug 'luochen1990/rainbow'
-    " Plug 'p00f/nvim-ts-rainbow'
+    " Plug 'luochen1990/rainbow'
+    Plug 'p00f/nvim-ts-rainbow'
 
     " Org-mode in Vim
     Plug 'vimwiki/vimwiki'
@@ -72,12 +72,25 @@ call plug#begin(stdpath('data').'/plugged')
 
     " Treesitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
-    Plug 'nvim-treesitter/playground'
 
     " Python semantic highlighting
     Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
     Plug 'voldikss/vim-floaterm'
+
+    Plug 'tpope/vim-eunuch'
+
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
+    Plug 'rafamadriz/friendly-snippets'
+
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+    Plug 'stsewd/fzf-checkout.vim'
+
+    Plug 'simrat39/rust-tools.nvim'
 
 call plug#end()
 
