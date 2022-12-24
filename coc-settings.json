@@ -1,5 +1,0 @@
-{
-    "clangd.semanticHighlighting": true,
-    "python.linting.flake8CategorySeverity.E": "Warning",
-    "python.linting.flake8CategorySeverity.F": "Warning"
-}
