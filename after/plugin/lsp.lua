@@ -41,7 +41,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     group = augroup,
     pattern = "*",
     callback = function()
-        vim.cmd.LspZeroFormat()
+        vim.lsp.buf.format()
+        -- vim.cmd.LspZeroFormat()
     end,
 })
 

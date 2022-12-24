@@ -93,4 +93,8 @@ return require('packer').startup(function(use)
     }
     use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' }
 
+
+    -- floating termina
+    use 'voldikss/vim-floaterm'
+
 end)
