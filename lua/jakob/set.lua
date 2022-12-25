@@ -43,7 +43,7 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 -- make tab, etc visible
 vim.o.list = true
-vim.o.listchars = "eol:⏎,tab:▸·,trail:×,nbsp:⎵"
+-- vim.o.listchars = "eol:⏎,tab:▸·,trail:×,nbsp:⎵"
 
 
 -- show cursorcolumn
