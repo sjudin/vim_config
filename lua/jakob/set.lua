@@ -39,7 +39,8 @@ vim.opt.matchpairs = vim.opt.matchpairs + "<:>"
 vim.opt.visualbell = true
 
 -- session options
-vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+-- vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.o.sessionoptions = "curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 -- make tab, etc visible
 vim.o.list = true

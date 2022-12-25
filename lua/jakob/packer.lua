@@ -28,6 +28,13 @@ return require('packer').startup(function(use)
 
     -- treesitter
     use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } }
+    use {
+        'm-demare/hlargs.nvim',
+        requires = { 'nvim-treesitter/nvim-treesitter' },
+        config = function()
+            require('hlargs').setup()
+        end,
+    }
 
     -- hop
     use 'phaazon/hop.nvim'
@@ -62,15 +69,6 @@ return require('packer').startup(function(use)
             -- signatures
             { 'ray-x/lsp_signature.nvim' },
         }
-    }
-
-    -- LSP semantic highlighting
-    use {
-        "theHamsta/nvim-semantic-tokens",
-        config = function()
-            require("jakob.semantictokens").setup()
-        end,
-        disable = false,
     }
 
     -- Session management
@@ -110,6 +108,15 @@ return require('packer').startup(function(use)
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
+    }
+
+    -- Zen mode
+    use {
+        'folke/zen-mode.nvim',
+        config = function()
+            require("zen-mode").setup {}
+            vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
+        end
     }
 
 end)
