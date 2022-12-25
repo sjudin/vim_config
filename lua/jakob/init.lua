@@ -22,3 +22,12 @@ autocmd("TextYankPost", {
         })
     end
 })
+
+autocmd({ "FileType", "BufNewFile", "BufRead" }, {
+    group = augroup("formatoptions_set_group", {}),
+    pattern = "*",
+    callback = function()
+        vim.opt.formatoptions = vim.opt.formatoptions - "o"
+    end
+}
+)
