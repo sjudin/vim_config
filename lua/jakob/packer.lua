@@ -58,6 +58,9 @@ return require('packer').startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
+
+            -- signatures
+            { 'ray-x/lsp_signature.nvim' },
         }
     }
 
@@ -93,8 +96,15 @@ return require('packer').startup(function(use)
     }
     use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' }
 
-
-    -- floating termina
+    -- floating terminal
     use 'voldikss/vim-floaterm'
+
+
+    -- show indents
+    use { "lukas-reineke/indent-blankline.nvim", config = function()
+        require("indent_blankline").setup {
+            show_end_of_line = true,
+        }
+    end }
 
 end)

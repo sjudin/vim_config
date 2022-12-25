@@ -32,18 +32,34 @@ lsp.on_attach(function(client, bufnr)
     else
         -- print("not highlighting")
     end
+
+    -- formatting
+    if caps.documentRangeFormattingProvider then
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = vim.api.nvim_create_augroup("format", {}),
+            buffer = bufnr,
+            callback = function()
+                -- vim.lsp.buf.format()
+                vim.cmd.LspZeroFormat()
+            end,
+        })
+
+    end
+
+    -- automatically open floating window showing errors
+    -- comment this out and use "gl" if it is annoying
+    -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+    --     group = vim.api.nvim_create_augroup("floating_diagnostic", {}),
+    --     pattern = "*",
+    --     callback = function()
+    --         vim.diagnostic.open_float(nil, { focus = false })
+    --     end,
+    -- })
+
+    require "lsp_signature".on_attach()
 end
 )
 
-
-local augroup = vim.api.nvim_create_augroup("fmt_on_save", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = augroup,
-    pattern = "*",
-    callback = function()
-        vim.lsp.buf.format()
-        -- vim.cmd.LspZeroFormat()
-    end,
-})
 
 lsp.setup()

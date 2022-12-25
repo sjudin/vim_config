@@ -42,7 +42,9 @@ vim.opt.visualbell = true
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- make tab, etc visible
+vim.o.list = true
 vim.o.listchars = "eol:⏎,tab:▸·,trail:×,nbsp:⎵"
+
 
 -- show cursorcolumn
 vim.o.cursorline = true
