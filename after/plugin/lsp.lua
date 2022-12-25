@@ -34,7 +34,7 @@ lsp.on_attach(function(client, bufnr)
     end
 
     -- formatting
-    if caps.documentRangeFormattingProvider then
+    if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
 
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = vim.api.nvim_create_augroup("format", {}),
