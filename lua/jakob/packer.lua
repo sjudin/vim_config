@@ -21,7 +21,8 @@ return require('packer').startup(function(use)
     }
 
     -- color scheme
-    use "ellisonleao/gruvbox.nvim"
+    -- use "ellisonleao/gruvbox.nvim"
+    use 'sainnhe/gruvbox-material'
 
     -- smooth scrolling
     use "psliwka/vim-smoothie"
@@ -31,9 +32,6 @@ return require('packer').startup(function(use)
     use {
         'm-demare/hlargs.nvim',
         requires = { 'nvim-treesitter/nvim-treesitter' },
-        config = function()
-            require('hlargs').setup()
-        end,
     }
 
     -- hop
@@ -72,20 +70,14 @@ return require('packer').startup(function(use)
     }
 
     -- Session management
-    use 'rmagatti/auto-session'
     use {
-        'rmagatti/session-lens',
-        requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+        'jedrzejboczar/possession.nvim',
+        requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
     }
 
 
     -- colorize hex
-    use {
-        'norcalli/nvim-colorizer.lua',
-        config = function()
-            require 'colorizer'.setup()
-        end,
-    }
+    use 'norcalli/nvim-colorizer.lua'
 
     -- status line
     use {
@@ -99,24 +91,12 @@ return require('packer').startup(function(use)
 
 
     -- show indents
-    use { "lukas-reineke/indent-blankline.nvim", config = function()
-        require("indent_blankline").setup {
-            show_end_of_line = true,
-        }
-    end }
+    use "lukas-reineke/indent-blankline.nvim"
 
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
+    -- autopairs
+    use "windwp/nvim-autopairs"
 
     -- Zen mode
-    use {
-        'folke/zen-mode.nvim',
-        config = function()
-            require("zen-mode").setup {}
-            vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
-        end
-    }
+    use 'folke/zen-mode.nvim'
 
 end)

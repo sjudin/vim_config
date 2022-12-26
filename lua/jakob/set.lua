@@ -36,16 +36,15 @@ vim.opt.termguicolors = true
 -- make % work with "<>" aswell
 vim.opt.matchpairs = vim.opt.matchpairs + "<:>"
 
-vim.opt.visualbell = true
-
 -- session options
--- vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-vim.o.sessionoptions = "curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.opt.sessionoptions = vim.opt.sessionoptions - "terminal"
+vim.opt.sessionoptions = vim.opt.sessionoptions - "buffers"
+
+vim.opt.visualbell = true
 
 -- make tab, etc visible
 vim.o.list = true
 -- vim.o.listchars = "eol:⏎,tab:▸·,trail:×,nbsp:⎵"
-
 
 -- show cursorcolumn
 vim.o.cursorline = true
