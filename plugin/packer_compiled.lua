@@ -119,10 +119,10 @@ _G.packer_plugins = {
     path = "/home/jakob/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["gruvbox-material"] = {
+  ["gruvbox.nvim"] = {
     loaded = true,
-    path = "/home/jakob/.local/share/nvim/site/pack/packer/start/gruvbox-material",
-    url = "https://github.com/sainnhe/gruvbox-material"
+    path = "/home/jakob/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["hlargs.nvim"] = {
     loaded = true,
@@ -216,7 +216,6 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["possession.nvim"] = {
-    config = { "\27LJ\2\ni\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\1\0B\0\2\1K\0\1\0\19load_extension\14telescope\nsetup\15possession\frequire\0" },
     loaded = true,
     path = "/home/jakob/.local/share/nvim/site/pack/packer/start/possession.nvim",
     url = "https://github.com/jedrzejboczar/possession.nvim"
@@ -254,10 +253,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: possession.nvim
-time([[Config for possession.nvim]], true)
-try_loadstring("\27LJ\2\ni\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\1\0B\0\2\1K\0\1\0\19load_extension\14telescope\nsetup\15possession\frequire\0", "config", "possession.nvim")
-time([[Config for possession.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

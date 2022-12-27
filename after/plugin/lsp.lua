@@ -1,6 +1,21 @@
 local lsp = require('lsp-zero')
 
-lsp.preset('recommended')
+lsp.set_preferences({
+    suggest_lsp_servers = true,
+    setup_servers_on_start = true,
+    set_lsp_keymaps = false,
+    configure_diagnostics = true,
+    cmp_capabilities = true,
+    manage_nvim_cmp = true,
+    call_servers = 'local',
+    sign_icons = {
+        error = '✘',
+        warn = '▲',
+        hint = '⚑',
+        info = ''
+    }
+})
+
 lsp.nvim_workspace()
 
 lsp.on_attach(function(client, bufnr)
@@ -31,8 +46,37 @@ lsp.on_attach(function(client, bufnr)
     -- })
 
     require "lsp_signature".on_attach()
+
+    -- LSP actions
+    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+    vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    vim.keymap.set('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+
+    -- Diagnostics
+    vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+    vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+    vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+
+    -- For C++ files we want "gi" to use the clangd functionallity to switch
+    -- between source and header files. For other files we want to use
+    -- vim.lsp.buf.implementation
+    if client.name == 'clangd' then
+        vim.keymap.set("n", "gi", vim.cmd.ClangdSwitchSourceHeader)
+    else
+        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+    end
+
 end
 )
 
+lsp.configure('clangd', {
+    cmd = { "clangd", "--suggest-missing-includes", "--header-insertion=never" },
+})
 
 lsp.setup()
