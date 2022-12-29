@@ -19,6 +19,7 @@ lsp.set_preferences({
 lsp.nvim_workspace()
 
 lsp.on_attach(function(client, bufnr)
+    print(string.format("Attaching %s to buffer %d", client.name, bufnr))
     local caps = client.server_capabilities
 
     -- formatting
@@ -54,9 +55,9 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
     vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    vim.keymap.set('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+    vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
+    vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    vim.keymap.set('x', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
 
     -- Diagnostics
     vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
@@ -77,6 +78,27 @@ end
 
 lsp.configure('clangd', {
     cmd = { "clangd", "--suggest-missing-includes", "--header-insertion=never" },
+})
+
+-- https://github.com/mattn/efm-langserver
+-- Use efm (general-purpose language server) to get formatting for filetypes
+-- where the LSP does not have documentFormatting=true. For examples of how this
+-- works, have a look at
+-- https://github.com/lukas-reineke/dotfiles/blob/master/vim/lua/lsp/init.lua
+lsp.configure('efm', {
+    init_options = { documentFormatting = true },
+    filetypes = { "python" },
+    settings = {
+        rootMarkers = { ".git/" },
+        languages = {
+            python = {
+                {
+                    formatCommand = "black -",
+                    formatStdin = true,
+                }
+            }
+        }
+    }
 })
 
 lsp.setup()

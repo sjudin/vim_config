@@ -54,8 +54,16 @@ return require('packer').startup(function(use)
     -- Rainbow parentheses
     use 'p00f/nvim-ts-rainbow'
 
-    -- scrollbar
-    use 'dstein64/nvim-scrollview'
+    -- scrollbar (disabled cause transparency is not working)
+    -- use { 'dstein64/nvim-scrollview', config = function()
+    --     require('scrollview').setup({
+    --         excluded_filetypes = { 'nerdtree' },
+    --         current_only = true,
+    --         winblend = 75,
+    --         base = 'buffer',
+    --         column = 80
+    --     })
+    -- end }
 
     -- LSP stuff
     use {
@@ -89,6 +97,14 @@ return require('packer').startup(function(use)
         requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
     }
 
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
+
 
     -- colorize hex
     use 'norcalli/nvim-colorizer.lua'
@@ -112,6 +128,12 @@ return require('packer').startup(function(use)
 
     -- Zen mode
     use 'folke/zen-mode.nvim'
+
+    -- Faster neovim startup
+    use { 'lewis6991/impatient.nvim', config = function()
+        require('impatient')
+    end
+    }
 
 
     -- Automatically set up your configuration after cloning packer.nvim
