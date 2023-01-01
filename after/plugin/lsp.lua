@@ -49,20 +49,21 @@ lsp.on_attach(function(client, bufnr)
     require "lsp_signature".on_attach()
 
     -- LSP actions
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+    -- Lspsaga commands
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<cr>')
+    vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<cr>')
+    vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<cr>')
+    vim.keymap.set('n', 'gl', '<cmd>Lspsaga show_line_diagnostics<cr>')
+    vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<cr>")
+
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
     vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+    vim.keymap.set('n', 'gr', function() vim.cmd.Telescope { args = { 'lsp_references' } } end)
     vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-    vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
-    vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    vim.keymap.set('x', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
 
     -- Diagnostics
-    vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-    vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-    vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+    vim.keymap.set('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>')
+    vim.keymap.set('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 
     -- For C++ files we want "gi" to use the clangd functionallity to switch
     -- between source and header files. For other files we want to use
@@ -101,4 +102,14 @@ lsp.configure('efm', {
     }
 })
 
+
+lsp.setup_nvim_cmp({
+    formatting = {
+        format = require 'lspkind'.cmp_format({
+            mode = 'symbol_text', -- show only symbol annotations
+            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+        })
+    }
+})
 lsp.setup()

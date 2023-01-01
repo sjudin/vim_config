@@ -36,7 +36,10 @@ return require('packer').startup(function(use)
 
     -- color scheme
     use "ellisonleao/gruvbox.nvim"
-    -- use 'sainnhe/gruvbox-material'
+    use 'sainnhe/gruvbox-material'
+    use 'ful1e5/onedark.nvim'
+    use 'folke/tokyonight.nvim'
+    use 'marko-cerovac/material.nvim'
 
     -- smooth scrolling
     use "psliwka/vim-smoothie"
@@ -73,6 +76,7 @@ return require('packer').startup(function(use)
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
+            { 'glepnir/lspsaga.nvim' },
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
@@ -88,6 +92,10 @@ return require('packer').startup(function(use)
 
             -- signatures
             { 'ray-x/lsp_signature.nvim' },
+
+            -- vs-code like pictograms to completion menu
+            { 'onsails/lspkind.nvim' },
+
         }
     }
 
@@ -135,6 +143,13 @@ return require('packer').startup(function(use)
     end
     }
 
+    -- highlights occurences of word under cursor using treesitter and LSP
+    use { 'RRethy/vim-illuminate', config = function()
+        require('illuminate').configure()
+    end }
+
+    -- startup dashboard
+    use { 'glepnir/dashboard-nvim' }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

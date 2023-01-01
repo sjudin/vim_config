@@ -31,3 +31,18 @@ autocmd({ "FileType", "BufNewFile", "BufRead" }, {
     end
 }
 )
+
+-- Show which buffer is inactive by only displaying the colorcolumn for that
+-- buffer
+local bg_highlight = augroup("BgHighlight", {})
+autocmd('WinEnter',
+    { group = bg_highlight, pattern = "*", callback = function()
+        vim.opt.colorcolumn = "80"
+    end
+    })
+
+autocmd('WinLeave',
+    { group = bg_highlight, pattern = "*", callback = function()
+        vim.opt.colorcolumn = "0"
+    end
+    })
