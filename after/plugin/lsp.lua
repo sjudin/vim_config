@@ -50,28 +50,29 @@ lsp.on_attach(function(client, bufnr)
 
     -- LSP actions
     -- Lspsaga commands
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<cr>')
-    vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<cr>')
-    vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<cr>')
-    vim.keymap.set('n', 'gl', '<cmd>Lspsaga show_line_diagnostics<cr>')
-    vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<cr>")
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<cr>', { desc = "(lsp) [c]ode [a]ction" })
+    vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<cr>', { desc = "(lsp) [r]e[n]ame" })
+    vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<cr>', { desc = "(lsp) [g]peek [d]efinition" })
+    vim.keymap.set('n', 'gl', '<cmd>Lspsaga show_line_diagnostics<cr>', { desc = "(lsp) [gl]ine diagnostics" })
+    vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<cr>", { desc = "(lsp) [K]hover doc" })
 
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-    vim.keymap.set('n', 'gr', function() vim.cmd.Telescope { args = { 'lsp_references' } } end)
-    vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = "(lsp) [g]oto [D]eclaration" })
+    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = "(lsp) [go] type definition" })
+    vim.keymap.set('n', 'gr', function() vim.cmd.Telescope { args = { 'lsp_references' } } end,
+        { desc = "(lsp) [g]oto [r]eferences" })
+    vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = "(lsp) [<C-k>] signature help" })
 
     -- Diagnostics
-    vim.keymap.set('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>')
-    vim.keymap.set('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
+    vim.keymap.set('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>', { desc = "(lsp) [gj] diagnostic jump next" })
+    vim.keymap.set('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>', { desc = "(lsp) [gk] diagnostic jump previous" })
 
     -- For C++ files we want "gi" to use the clangd functionallity to switch
     -- between source and header files. For other files we want to use
     -- vim.lsp.buf.implementation
     if client.name == 'clangd' then
-        vim.keymap.set("n", "gi", vim.cmd.ClangdSwitchSourceHeader)
+        vim.keymap.set("n", "gi", vim.cmd.ClangdSwitchSourceHeader, { desc = "(lsp, C++) [gi] switch source/header" })
     else
-        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = "(lsp) [g]oto [i]mplementation" })
     end
 
 end
