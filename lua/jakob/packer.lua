@@ -55,7 +55,7 @@ return require('packer').startup(function(use)
     use 'phaazon/hop.nvim'
 
     -- Rainbow parentheses
-    use 'p00f/nvim-ts-rainbow'
+    use 'mrjones2014/nvim-ts-rainbow'
 
     -- scrollbar (disabled cause transparency is not working)
     -- use { 'dstein64/nvim-scrollview', config = function()
@@ -150,6 +150,12 @@ return require('packer').startup(function(use)
 
     -- startup dashboard
     use { 'glepnir/dashboard-nvim' }
+
+    use { "asiryk/auto-hlsearch.nvim", tag = "1.0.0",
+        config = function()
+            require("auto-hlsearch").setup()
+        end
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

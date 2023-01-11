@@ -23,18 +23,18 @@ lsp.on_attach(function(client, bufnr)
     local caps = client.server_capabilities
 
     -- formatting
-    if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
+    -- if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
 
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("format", {}),
-            buffer = bufnr,
-            callback = function()
-                -- vim.lsp.buf.format()
-                vim.cmd.LspZeroFormat()
-            end,
-        })
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --         group = vim.api.nvim_create_augroup("format", {}),
+    --         buffer = bufnr,
+    --         callback = function()
+    --             -- vim.lsp.buf.format()
+    --             vim.cmd.LspZeroFormat()
+    --         end,
+    --     })
 
-    end
+    -- end
 
     -- automatically open floating window showing errors
     -- comment this out and use "gl" if it is annoying
@@ -74,6 +74,9 @@ lsp.on_attach(function(client, bufnr)
     else
         vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = "(lsp) [g]oto [i]mplementation" })
     end
+
+    -- Formatting
+    vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, { desc = "(lsp) [g]o [f]ormat" })
 
 end
 )
