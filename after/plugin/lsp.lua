@@ -23,18 +23,17 @@ lsp.on_attach(function(client, bufnr)
     local caps = client.server_capabilities
 
     -- formatting
-    -- if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
+    if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
 
-    --     vim.api.nvim_create_autocmd("BufWritePre", {
-    --         group = vim.api.nvim_create_augroup("format", {}),
-    --         buffer = bufnr,
-    --         callback = function()
-    --             -- vim.lsp.buf.format()
-    --             vim.cmd.LspZeroFormat()
-    --         end,
-    --     })
-
-    -- end
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = vim.api.nvim_create_augroup("format", {}),
+            buffer = bufnr,
+            callback = function()
+                -- vim.lsp.buf.format()
+                vim.cmd.LspZeroFormat()
+            end,
+        })
+    end
 
     -- automatically open floating window showing errors
     -- comment this out and use "gl" if it is annoying
@@ -50,12 +49,15 @@ lsp.on_attach(function(client, bufnr)
 
     -- LSP actions
     -- Lspsaga commands
+    vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<cr>", { silent = true, desc = "(lsp) [g]o [f]ind" })
+
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<cr>', { desc = "(lsp) [c]ode [a]ction" })
     vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<cr>', { desc = "(lsp) [r]e[n]ame" })
-    vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<cr>', { desc = "(lsp) [g]peek [d]efinition" })
+    -- vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<cr>', { desc = "(lsp) [g]peek [d]efinition" })
     vim.keymap.set('n', 'gl', '<cmd>Lspsaga show_line_diagnostics<cr>', { desc = "(lsp) [gl]ine diagnostics" })
     vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<cr>", { desc = "(lsp) [K]hover doc" })
 
+    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = "(lsp) [g]o [d]efinition" })
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = "(lsp) [g]oto [D]eclaration" })
     vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = "(lsp) [go] type definition" })
     vim.keymap.set('n', 'gr', function() vim.cmd.Telescope { args = { 'lsp_references' } } end,
@@ -76,7 +78,7 @@ lsp.on_attach(function(client, bufnr)
     end
 
     -- Formatting
-    vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, { desc = "(lsp) [g]o [f]ormat" })
+    -- vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, { desc = "(lsp) [g]o [f]ormat" })
 
 end
 )

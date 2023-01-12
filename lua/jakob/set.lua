@@ -1,6 +1,6 @@
 vim.opt.hidden = false
 
-vim.opt.iskeyword = vim.opt.iskeyword - "_"
+-- vim.opt.iskeyword = vim.opt.iskeyword - "_"
 
 -- line numbering
 vim.opt.nu = true
