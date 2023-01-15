@@ -1,5 +1,7 @@
 local lsp = require('lsp-zero')
 
+require('lspsaga').setup({})
+
 lsp.set_preferences({
     suggest_lsp_servers = true,
     setup_servers_on_start = true,
