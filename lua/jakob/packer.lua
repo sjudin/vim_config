@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
     -- color scheme
     use "ellisonleao/gruvbox.nvim"
     use 'sainnhe/gruvbox-material'
-    use 'ful1e5/onedark.nvim'
+    use 'olimorris/onedarkpro.nvim'
     use 'folke/tokyonight.nvim'
     use 'marko-cerovac/material.nvim'
 
