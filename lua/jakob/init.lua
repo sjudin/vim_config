@@ -46,3 +46,11 @@ autocmd('WinLeave',
         vim.opt.colorcolumn = "0"
     end
     })
+
+-- Detect Jenkinsfiles and set the filetype to groovy
+autocmd({ 'BufNewFile', 'BufRead' },
+    { group = augroup("jenkinsfile_set_filetype_group", {}),
+        pattern = "Jenkinsfile*", callback = function()
+        vim.cmd [[set filetype=groovy]]
+    end
+    })
