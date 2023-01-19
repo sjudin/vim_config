@@ -1,6 +1,25 @@
 local lsp = require('lsp-zero')
 
-require('lspsaga').setup({})
+require('lspsaga').setup({
+    ui = {
+        colors = {
+            --float window normal background color
+            normal_bg = '#3C3836',
+            --title background color
+            title_bg = '#928374',
+            red = '#FB4934',
+            magenta = '#b33076',
+            orange = '#FE8019',
+            yellow = '#FABD2F',
+            green = '#B8BB26',
+            cyan = '#36d0e0',
+            blue = '#458588',
+            purple = '#D3869B',
+            white = '#FBF1C7',
+            black = '#1D2021',
+        },
+    }
+})
 
 lsp.set_preferences({
     suggest_lsp_servers = true,
