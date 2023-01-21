@@ -25,6 +25,9 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use 'lewis6991/gitsigns.nvim'
 
+    use 'tpope/vim-commentary'
+    use 'tpope/vim-surround'
+
     -- Remember last cursor placement when reopening neovim
     use 'farmergreg/vim-lastplace'
 
