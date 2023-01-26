@@ -44,17 +44,17 @@ lsp.on_attach(function(client, bufnr)
     local caps = client.server_capabilities
 
     -- formatting
-    if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
+    -- if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
 
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("format", {}),
-            buffer = bufnr,
-            callback = function()
-                -- vim.lsp.buf.format()
-                vim.cmd.LspZeroFormat()
-            end,
-        })
-    end
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("format", {}),
+        buffer = bufnr,
+        callback = function()
+            vim.lsp.buf.format()
+            -- vim.cmd.LspZeroFormat()
+        end,
+    })
+    --end
 
     -- automatically open floating window showing errors
     -- comment this out and use "gl" if it is annoying

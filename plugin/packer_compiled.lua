@@ -271,6 +271,11 @@ _G.packer_plugins = {
     path = "/home/jakob/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/jakob/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    url = "https://github.com/tpope/vim-commentary"
+  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "/home/jakob/.local/share/nvim/site/pack/packer/start/vim-floaterm",
@@ -297,6 +302,11 @@ _G.packer_plugins = {
     path = "/home/jakob/.local/share/nvim/site/pack/packer/start/vim-smoothie",
     url = "https://github.com/psliwka/vim-smoothie"
   },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/jakob/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
   ["zen-mode.nvim"] = {
     loaded = true,
     path = "/home/jakob/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
@@ -309,14 +319,14 @@ time([[Defining packer_plugins]], false)
 time([[Config for impatient.nvim]], true)
 try_loadstring("\27LJ\2\n)\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\14impatient\frequire\0", "config", "impatient.nvim")
 time([[Config for impatient.nvim]], false)
--- Config for: vim-illuminate
-time([[Config for vim-illuminate]], true)
-try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14configure\15illuminate\frequire\0", "config", "vim-illuminate")
-time([[Config for vim-illuminate]], false)
 -- Config for: auto-hlsearch.nvim
 time([[Config for auto-hlsearch.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18auto-hlsearch\frequire\0", "config", "auto-hlsearch.nvim")
 time([[Config for auto-hlsearch.nvim]], false)
+-- Config for: vim-illuminate
+time([[Config for vim-illuminate]], true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14configure\15illuminate\frequire\0", "config", "vim-illuminate")
+time([[Config for vim-illuminate]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

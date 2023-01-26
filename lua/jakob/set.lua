@@ -1,5 +1,6 @@
 vim.opt.hidden = false
 
+vim.opt.guicursor = ""
 -- vim.opt.iskeyword = vim.opt.iskeyword - "_"
 
 -- line numbering
@@ -19,6 +20,7 @@ vim.opt.wrap = false
 -- no swapfile or backup
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.undofile = true
 
 -- search related options
 vim.opt.hlsearch = false
