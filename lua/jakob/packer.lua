@@ -79,7 +79,7 @@ return require('packer').startup(function(use)
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
-            { 'glepnir/lspsaga.nvim' },
+            { 'glepnir/lspsaga.nvim', commit = '990be59c4ec904ff5c7d980cb0d067dfa806848e' },
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
@@ -152,7 +152,7 @@ return require('packer').startup(function(use)
     end }
 
     -- startup dashboard
-    use { 'glepnir/dashboard-nvim' }
+    use { 'glepnir/dashboard-nvim', commit = '4dac085331b6c6ccb98a7057bf7b2df424ccc088' }
 
     use { "asiryk/auto-hlsearch.nvim", tag = "1.0.0",
         config = function()
