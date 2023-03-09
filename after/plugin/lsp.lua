@@ -156,26 +156,11 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
     end,
 })
 
--- Highlight const function parameters
-vim.api.nvim_create_autocmd("LspTokenUpdate", {
-    callback = function(args)
-        local token = args.data.token
-        if token.type == "parameter" and token.modifiers.functionScope then
-            if token.modifiers.readonly then
-                st.highlight_token(token, args.buf, args.data.client_id, 'ConstFunctionParam')
-            end
-        end
-    end,
-})
-
 
 local ohl = vim.api.nvim_get_hl_by_name("Identifier", true)
 ohl["bold"] = true
 local chl = vim.api.nvim_get_hl_by_name("Constant", true)
 chl["bold"] = true
-local tmp = vim.api.nvim_get_hl_by_name("Hlargs", true)
-tmp["bold"] = true
 
 vim.api.nvim_set_hl(0, 'MutGlobalScope', ohl)
 vim.api.nvim_set_hl(0, 'ConstGlobalScope', chl)
-vim.api.nvim_set_hl(0, 'ConstFunctionParam', tmp)
