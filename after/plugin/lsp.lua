@@ -1,25 +1,6 @@
 local lsp = require('lsp-zero')
 
-require('lspsaga').setup({
-    ui = {
-        colors = {
-            --float window normal background color
-            normal_bg = '#3C3836',
-            --title background color
-            title_bg = '#928374',
-            red = '#FB4934',
-            magenta = '#b33076',
-            orange = '#FE8019',
-            yellow = '#FABD2F',
-            green = '#B8BB26',
-            cyan = '#36d0e0',
-            blue = '#458588',
-            purple = '#D3869B',
-            white = '#FBF1C7',
-            black = '#1D2021',
-        },
-    }
-})
+require('lspsaga').setup()
 
 lsp.set_preferences({
     suggest_lsp_servers = true,
@@ -46,15 +27,15 @@ lsp.on_attach(function(client, bufnr)
     -- formatting
     -- if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup("format", {}),
-        buffer = bufnr,
-        callback = function()
-            vim.lsp.buf.format()
-            -- vim.cmd.LspZeroFormat()
-        end,
-    })
-    --end
+    --  vim.api.nvim_create_autocmd("BufWritePre", {
+    --      group = vim.api.nvim_create_augroup("format", {}),
+    --      buffer = bufnr,
+    --      callback = function()
+    --          vim.lsp.buf.format()
+    --          -- vim.cmd.LspZeroFormat()
+    --      end,
+    --  })
+    -- end
 
     -- automatically open floating window showing errors
     -- comment this out and use "gl" if it is annoying
@@ -99,8 +80,7 @@ lsp.on_attach(function(client, bufnr)
     end
 
     -- Formatting
-    -- vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, { desc = "(lsp) [g]o [f]ormat" })
-
+    vim.keymap.set('n', 'gm', vim.lsp.buf.format, { desc = "(lsp) [g]o for[m]at" })
 end
 )
 
