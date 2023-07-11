@@ -4,5 +4,6 @@
 -- diagnostics.priority = 150
 
 require('hlargs').setup({
+    excluded_filetypes = {"c", "cpp"},
     hl_priority = vim.highlight.priorities.semantic_tokens + 1
 })

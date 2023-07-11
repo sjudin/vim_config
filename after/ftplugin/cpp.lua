@@ -4,6 +4,7 @@ vim.api.nvim_set_hl(0, "@lsp.typemod.variable.globalScope.cpp", { bold = true })
 vim.api.nvim_set_hl(0, "@lsp.typemod.parameter.readonly.cpp", { bold = true })
 
 local links = {
+  ['@lsp.typemod.parameter'] = 'Hlargs',
   ['@lsp.type.namespace'] = '@namespace',
   ['@lsp.type.type'] = '@type',
   ['@lsp.type.class'] = '@type',

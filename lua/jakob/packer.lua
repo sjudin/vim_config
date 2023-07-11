@@ -60,17 +60,6 @@ return require('packer').startup(function(use)
     -- Rainbow parentheses
     use 'mrjones2014/nvim-ts-rainbow'
 
-    -- scrollbar (disabled cause transparency is not working)
-    -- use { 'dstein64/nvim-scrollview', config = function()
-    --     require('scrollview').setup({
-    --         excluded_filetypes = { 'nerdtree' },
-    --         current_only = true,
-    --         winblend = 75,
-    --         base = 'buffer',
-    --         column = 80
-    --     })
-    -- end }
-
     -- LSP stuff
     use {
         'VonHeikemen/lsp-zero.nvim',

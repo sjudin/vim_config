@@ -22,31 +22,6 @@ lsp.nvim_workspace()
 
 lsp.on_attach(function(client, bufnr)
     print(string.format("Attaching %s to buffer %d", client.name, bufnr))
-    local caps = client.server_capabilities
-
-    -- formatting
-    -- if caps.documentRangeFormattingProvider or caps.documentFormattingProvider then
-
-    --  vim.api.nvim_create_autocmd("BufWritePre", {
-    --      group = vim.api.nvim_create_augroup("format", {}),
-    --      buffer = bufnr,
-    --      callback = function()
-    --          vim.lsp.buf.format()
-    --          -- vim.cmd.LspZeroFormat()
-    --      end,
-    --  })
-    -- end
-
-    -- automatically open floating window showing errors
-    -- comment this out and use "gl" if it is annoying
-    -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-    --     group = vim.api.nvim_create_augroup("floating_diagnostic", {}),
-    --     pattern = "*",
-    --     callback = function()
-    --         vim.diagnostic.open_float(nil, { focus = false })
-    --     end,
-    -- })
-
     require "lsp_signature".on_attach()
 
     -- LSP actions
@@ -113,34 +88,10 @@ lsp.configure('efm', {
 lsp.setup_nvim_cmp({
     formatting = {
         format = require 'lspkind'.cmp_format({
-            mode = 'symbol_text', -- show only symbol annotations
-            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            mode = 'symbol_text',  -- show only symbol annotations
+            maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         })
     }
 })
 lsp.setup()
-
-local st = vim.lsp.semantic_tokens
--- Highlight global variables
-vim.api.nvim_create_autocmd("LspTokenUpdate", {
-    callback = function(args)
-        local token = args.data.token
-        if token.type == "variable" and token.modifiers.globalScope then
-            if token.modifiers.readonly then
-                st.highlight_token(token, args.buf, args.data.client_id, 'ConstGlobalScope')
-            else
-                st.highlight_token(token, args.buf, args.data.client_id, 'MutGlobalScope')
-            end
-        end
-    end,
-})
-
-
-local ohl = vim.api.nvim_get_hl_by_name("Identifier", true)
-ohl["bold"] = true
-local chl = vim.api.nvim_get_hl_by_name("Constant", true)
-chl["bold"] = true
-
-vim.api.nvim_set_hl(0, 'MutGlobalScope', ohl)
-vim.api.nvim_set_hl(0, 'ConstGlobalScope', chl)
