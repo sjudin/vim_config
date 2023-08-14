@@ -25,8 +25,11 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use 'lewis6991/gitsigns.nvim'
 
-    use 'tpope/vim-commentary'
-    use 'tpope/vim-surround'
+    -- Comments
+    use 'numToStr/Comment.nvim'
+
+    -- Fast file navigation
+    use 'ThePrimeagen/harpoon'
 
     -- Remember last cursor placement when reopening neovim
     use 'farmergreg/vim-lastplace'
@@ -63,12 +66,16 @@ return require('packer').startup(function(use)
     -- LSP stuff
     use {
         'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
-            { 'glepnir/lspsaga.nvim', --[[commit = '990be59c4ec904ff5c7d980cb0d067dfa806848e']] },
+            {
+                'nvimdev/lspsaga.nvim', --[[commit = '990be59c4ec904ff5c7d980cb0d067dfa806848e']]
+                after = 'nvim-lspconfig',
+            },
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
@@ -76,6 +83,7 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-path' },
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
             { 'hrsh7th/cmp-nvim-lua' },
 
             -- Snippets
@@ -87,6 +95,9 @@ return require('packer').startup(function(use)
 
             -- vs-code like pictograms to completion menu
             { 'onsails/lspkind.nvim' },
+
+            -- presets for efm language server
+            { 'creativenull/efmls-configs-nvim' },
 
         }
     }
@@ -102,7 +113,7 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
         },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        tag = 'nightly'                    -- optional, updated every week. (see issue #1193)
     }
 
 
@@ -128,12 +139,6 @@ return require('packer').startup(function(use)
 
     -- Zen mode
     use 'folke/zen-mode.nvim'
-
-    -- Faster neovim startup
-    use { 'lewis6991/impatient.nvim', config = function()
-        require('impatient')
-    end
-    }
 
     -- highlights occurences of word under cursor using treesitter and LSP
     use { 'RRethy/vim-illuminate', config = function()

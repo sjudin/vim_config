@@ -1,28 +1,38 @@
-local lsp = require('lsp-zero')
-
-require('lspsaga').setup()
-
-lsp.set_preferences({
-    suggest_lsp_servers = true,
+local lsp = require('lsp-zero').preset({
     setup_servers_on_start = true,
     set_lsp_keymaps = false,
     configure_diagnostics = true,
-    cmp_capabilities = true,
     manage_nvim_cmp = true,
     call_servers = 'local',
-    sign_icons = {
-        error = '✘',
-        warn = '▲',
-        hint = '⚑',
-        info = ''
+})
+lsp.set_sign_icons({
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = ''
+})
+
+vim.diagnostic.config({
+    virtual_text = false
+})
+
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls()) -- (Optional) Configure lua language server for neovim
+
+require('lspsaga').setup({
+    lightbulb = {
+        virtual_text = false,
+    },
+    ui = {
+        code_action = '🔨',
+    },
+    rename = {
+        in_select = false
     }
 })
 
-lsp.nvim_workspace()
-
 lsp.on_attach(function(client, bufnr)
-    print(string.format("Attaching %s to buffer %d", client.name, bufnr))
-    require "lsp_signature".on_attach()
+    -- print(string.format("Attaching %s to buffer %d", client.name, bufnr))
+    require "lsp_signature".on_attach({}, bufnr)
 
     -- LSP actions
     -- Lspsaga commands
@@ -59,39 +69,63 @@ lsp.on_attach(function(client, bufnr)
 end
 )
 
-lsp.configure('clangd', {
-    cmd = { "clangd", "--suggest-missing-includes", "--header-insertion=never" },
-})
-
 -- https://github.com/mattn/efm-langserver
 -- Use efm (general-purpose language server) to get formatting for filetypes
 -- where the LSP does not have documentFormatting=true. For examples of how this
 -- works, have a look at
 -- https://github.com/lukas-reineke/dotfiles/blob/master/vim/lua/lsp/init.lua
-lsp.configure('efm', {
+
+-- Custom setup for language servers
+local lspconfig = require('lspconfig')
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
+lspconfig.clangd.setup({
+    cmd = { "clangd", "--header-insertion=never" },
+    capabilities = capabilities
+})
+
+lspconfig.efm.setup({
     init_options = { documentFormatting = true },
-    filetypes = { "python" },
+    -- filetypes = { "python" },
     settings = {
         rootMarkers = { ".git/" },
         languages = {
             python = {
+                require('efmls-configs.formatters.black'),
+                require('efmls-configs.linters.flake8'),
                 {
-                    formatCommand = "black -",
+                    formatCommand = "isort --stdout ${-l:lineLength} --profile black -",
                     formatStdin = true,
                 }
-            }
+            },
+            cpp = {
+                require('efmls-configs.linters.cppcheck'),
+                require('efmls-configs.linters.gcc'),
+                require('efmls-configs.linters.cpplint'),
+            },
         }
     }
 })
 
+lsp.setup()
 
-lsp.setup_nvim_cmp({
+local cmp = require('cmp')
+local lspkind = require('lspkind')
+
+cmp.setup({
     formatting = {
-        format = require 'lspkind'.cmp_format({
+        format = lspkind.cmp_format({
             mode = 'symbol_text',  -- show only symbol annotations
             maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         })
+    },
+    mapping = {
+        -- `Enter` key to confirm completion
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+
+        -- Ctrl+Space to trigger completion menu
+        ['<C-Space>'] = cmp.mapping.complete(),
     }
 })
-lsp.setup()
