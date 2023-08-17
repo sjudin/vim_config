@@ -101,9 +101,11 @@ lspconfig.efm.setup({
             },
             cpp = {
                 require('efmls-configs.linters.cppcheck'),
-                require('efmls-configs.linters.gcc'),
                 require('efmls-configs.linters.cpplint'),
             },
+            c = {
+                require('efmls-configs.linters.gcc'),
+            }
         }
     }
 })
