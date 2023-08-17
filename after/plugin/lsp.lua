@@ -55,7 +55,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>', { desc = "(lsp) [gj] diagnostic jump next" })
     vim.keymap.set('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>', { desc = "(lsp) [gk] diagnostic jump previous" })
 
-    -- For C++ files we want "gi" to use the clangd functionallity to switch
+    -- For C++ files we want "gi" to use the clangd functionality to switch
     -- between source and header files. For other files we want to use
     -- vim.lsp.buf.implementation
     if client.name == 'clangd' then
@@ -85,12 +85,21 @@ lspconfig.clangd.setup({
     capabilities = capabilities
 })
 
+local misspell = {
+    lintCommand = "misspell",
+    lintIgnoreExitCode = true,
+    lintStdin = true,
+    lintFormats = { "%f:%l:%c: %m" },
+    lintSource = "misspell",
+}
+
 lspconfig.efm.setup({
     init_options = { documentFormatting = true },
     -- filetypes = { "python" },
     settings = {
         rootMarkers = { ".git/" },
         languages = {
+            ["="] = { misspell },
             python = {
                 require('efmls-configs.formatters.black'),
                 require('efmls-configs.linters.flake8'),
