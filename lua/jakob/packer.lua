@@ -140,7 +140,7 @@ return require('packer').startup(function(use)
     -- Zen mode
     use 'folke/zen-mode.nvim'
 
-    -- highlights occurences of word under cursor using treesitter and LSP
+    -- highlights occurrences of word under cursor using treesitter and LSP
     use { 'RRethy/vim-illuminate', config = function()
         require('illuminate').configure()
     end }
