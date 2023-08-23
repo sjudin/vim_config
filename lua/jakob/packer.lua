@@ -134,9 +134,6 @@ return require('packer').startup(function(use)
     -- autopairs
     use "windwp/nvim-autopairs"
 
-    -- Zen mode
-    use 'folke/zen-mode.nvim'
-
     -- highlights occurrences of word under cursor using treesitter and LSP
     use { 'RRethy/vim-illuminate', config = function()
         require('illuminate').configure()
