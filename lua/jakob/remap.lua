@@ -19,3 +19,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- keep escape behaviour in terminal
 vim.keymap.set("t", "<leader><esc>", [[<c-\><c-n>]])
+
+-- Moving up/down also centers (with slight offset)
+vim.keymap.set("n", "<C-d>", "<C-d>zz5j")
+vim.keymap.set("n", "<C-u>", "<C-u>zz5k")
