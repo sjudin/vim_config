@@ -5,7 +5,7 @@ vim.opt.guicursor = ""
 
 -- line numbering
 vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- spaces over tabs, use 4 space indent
 vim.opt.tabstop = 4
