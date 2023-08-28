@@ -1,3 +1,18 @@
+-- Mason, note that this must be setup before lsp-zero
+require("mason").setup{}
+require("mason-lspconfig").setup {
+    ensure_installed = { "clangd", "efm", "pyright", "cmake", "lua_ls" },
+}
+require('mason-tool-installer').setup {
+    ensure_installed = {
+        "misspell",
+        "black",
+        "flake8",
+        "isort",
+        "cpplint",
+    }
+}
+
 local lsp = require('lsp-zero').preset({
     setup_servers_on_start = true,
     set_lsp_keymaps = false,
