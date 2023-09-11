@@ -1,5 +1,5 @@
 -- Mason, note that this must be setup before lsp-zero
-require("mason").setup{}
+require("mason").setup {}
 require("mason-lspconfig").setup {
     ensure_installed = { "clangd", "efm", "pyright", "cmake", "lua_ls" },
 }
@@ -70,14 +70,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>', { desc = "(lsp) [gj] diagnostic jump next" })
     vim.keymap.set('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>', { desc = "(lsp) [gk] diagnostic jump previous" })
 
-    -- For C++ files we want "gi" to use the clangd functionality to switch
-    -- between source and header files. For other files we want to use
-    -- vim.lsp.buf.implementation
-    if client.name == 'clangd' then
-        vim.keymap.set("n", "gi", vim.cmd.ClangdSwitchSourceHeader, { desc = "(lsp, C++) [gi] switch source/header" })
-    else
-        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = "(lsp) [g]oto [i]mplementation" })
-    end
+    -- Disabled because thats why
+    -- vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = "(lsp) [g]oto [i]mplementation" })
 
     -- Formatting
     vim.keymap.set('n', 'gm', vim.lsp.buf.format, { desc = "(lsp) [g]o for[m]at" })
@@ -96,6 +90,13 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 lspconfig.clangd.setup({
+    -- For C++ files we want "gi" to use the clangd functionality to switch
+    -- between source and header files.
+    on_attach = function(client, bufnr)
+        vim.keymap.set("n", "gi", vim.cmd.ClangdSwitchSourceHeader, { desc = "(lsp, C++) [gi] switch source/header" },
+            { noremap = true })
+    end,
+
     cmd = { "clangd", "--header-insertion=never" },
     capabilities = capabilities
 })

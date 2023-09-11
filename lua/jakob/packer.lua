@@ -56,6 +56,8 @@ return require('packer').startup(function(use)
 
     -- hop
     use 'phaazon/hop.nvim'
+    -- Leap
+    use 'ggandor/leap.nvim'
 
     -- Rainbow parentheses
     use 'mrjones2014/nvim-ts-rainbow'
