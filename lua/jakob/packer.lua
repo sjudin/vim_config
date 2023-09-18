@@ -60,7 +60,8 @@ return require('packer').startup(function(use)
     use 'ggandor/leap.nvim'
 
     -- Rainbow parentheses
-    use 'mrjones2014/nvim-ts-rainbow'
+    -- use 'mrjones2014/nvim-ts-rainbow'
+    use 'HiPhish/rainbow-delimiters.nvim'
 
     -- LSP stuff
     use {
