@@ -54,8 +54,6 @@ return require('packer').startup(function(use)
         requires = { 'nvim-treesitter/nvim-treesitter' },
     }
 
-    -- hop
-    use 'phaazon/hop.nvim'
     -- Leap
     use 'ggandor/leap.nvim'
 
