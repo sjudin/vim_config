@@ -54,6 +54,12 @@ return require('packer').startup(function(use)
         requires = { 'nvim-treesitter/nvim-treesitter' },
     }
 
+    -- Automatically convert into f-string in python
+    use {
+        "chrisgrieser/nvim-puppeteer",
+        requires = "nvim-treesitter/nvim-treesitter",
+    }
+
     -- Leap
     use 'ggandor/leap.nvim'
 
