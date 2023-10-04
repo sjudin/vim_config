@@ -77,10 +77,6 @@ return require('packer').startup(function(use)
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
             { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
-            {
-                'nvimdev/lspsaga.nvim', --[[commit = '990be59c4ec904ff5c7d980cb0d067dfa806848e']]
-                after = 'nvim-lspconfig',
-            },
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },

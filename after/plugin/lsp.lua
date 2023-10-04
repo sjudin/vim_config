@@ -33,45 +33,30 @@ vim.diagnostic.config({
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls()) -- (Optional) Configure lua language server for neovim
 
-require('lspsaga').setup({
-    lightbulb = {
-        virtual_text = false,
-    },
-    ui = {
-        code_action = '🔨',
-    },
-    rename = {
-        in_select = false
-    }
-})
-
 lsp.on_attach(function(client, bufnr)
     -- print(string.format("Attaching %s to buffer %d", client.name, bufnr))
     require "lsp_signature".on_attach({}, bufnr)
 
     -- LSP actions
-    -- Lspsaga commands
-    vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<cr>", { silent = true, desc = "(lsp) [g]o [f]ind" })
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = "(lsp) [c]ode [a]ction" })
 
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<cr>', { desc = "(lsp) [c]ode [a]ction" })
-    vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<cr>', { desc = "(lsp) [r]e[n]ame" })
-    -- vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<cr>', { desc = "(lsp) [g]peek [d]efinition" })
-    vim.keymap.set('n', 'gl', '<cmd>Lspsaga show_line_diagnostics<cr>', { desc = "(lsp) [gl]ine diagnostics" })
-    vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<cr>", { desc = "(lsp) [K]hover doc" })
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "(lsp) [r]e[n]ame" })
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "(lsp) [K]hover doc" })
 
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = "(lsp) [g]o [d]efinition" })
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = "(lsp) [g]oto [D]eclaration" })
-    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = "(lsp) [go] type definition" })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "(lsp) [g]o [d]efinition" })
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "(lsp) [g]oto [D]eclaration" })
+    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, { desc = "(lsp) [go] type definition" })
     vim.keymap.set('n', 'gr', function() vim.cmd.Telescope { args = { 'lsp_references' } } end,
         { desc = "(lsp) [g]oto [r]eferences" })
-    vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = "(lsp) [<C-k>] signature help" })
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = "(lsp) [<C-k>] signature help" })
 
     -- Diagnostics
-    vim.keymap.set('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>', { desc = "(lsp) [gj] diagnostic jump next" })
-    vim.keymap.set('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>', { desc = "(lsp) [gk] diagnostic jump previous" })
+    vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "(lsp) [gl]ine diagnostics" })
+    vim.keymap.set('n', 'gj', vim.diagnostic.goto_next, { desc = "(lsp) [gj] diagnostic jump next" })
+    vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, { desc = "(lsp) [gk] diagnostic jump previous" })
 
     -- Disabled because thats why
-    -- vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = "(lsp) [g]oto [i]mplementation" })
+    -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "(lsp) [g]oto [i]mplementation" })
 
     -- Formatting
     vim.keymap.set('n', 'gm', vim.lsp.buf.format, { desc = "(lsp) [g]o for[m]at" })
