@@ -155,6 +155,10 @@ return require('packer').startup(function(use)
     -- List frequently visited buffers
     use "dzfrias/arena.nvim"
 
+    -- Better "%" matching
+    use 'andymass/vim-matchup'
+
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
