@@ -1,7 +1,7 @@
 -- Mason, note that this must be setup before lsp-zero
 require("mason").setup {}
 require("mason-lspconfig").setup {
-    ensure_installed = { "clangd", "efm", "pyright", "cmake", "lua_ls" },
+    ensure_installed = { "clangd", "efm", "pyright", "cmake", "lua_ls", "jsonls" },
 }
 require('mason-tool-installer').setup {
     ensure_installed = {
