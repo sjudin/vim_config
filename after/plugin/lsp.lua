@@ -31,8 +31,6 @@ vim.diagnostic.config({
     virtual_text = false
 })
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls()) -- (Optional) Configure lua language server for neovim
-
 lsp.on_attach(function(client, bufnr)
     -- print(string.format("Attaching %s to buffer %d", client.name, bufnr))
     require "lsp_signature".on_attach({}, bufnr)
