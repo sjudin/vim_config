@@ -55,10 +55,10 @@ return require('packer').startup(function(use)
     }
 
     -- Automatically convert into f-string in python
-    use {
-        "chrisgrieser/nvim-puppeteer",
-        requires = "nvim-treesitter/nvim-treesitter",
-    }
+    -- use {
+    --     "chrisgrieser/nvim-puppeteer",
+    --     requires = "nvim-treesitter/nvim-treesitter",
+    -- }
 
     -- Leap
     use 'ggandor/leap.nvim'
@@ -84,7 +84,6 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-path' },
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
-            { 'L3MON4D3/LuaSnip' },
             { 'hrsh7th/cmp-nvim-lua' },
 
             -- Snippets
@@ -146,18 +145,14 @@ return require('packer').startup(function(use)
     -- startup dashboard
     use { 'glepnir/dashboard-nvim', commit = '4dac085331b6c6ccb98a7057bf7b2df424ccc088' }
 
-    use { "asiryk/auto-hlsearch.nvim", tag = "1.0.0",
+    use { "asiryk/auto-hlsearch.nvim",
         config = function()
             require("auto-hlsearch").setup()
         end
     }
 
-    -- List frequently visited buffers
-    use "dzfrias/arena.nvim"
-
     -- Better "%" matching
     use 'andymass/vim-matchup'
-
 
     -- Autocompletion for neovim config stuff
     use 'folke/neodev.nvim'
