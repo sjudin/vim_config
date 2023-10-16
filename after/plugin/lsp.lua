@@ -1,3 +1,6 @@
+-- Neodev, needs to be setup before other lsp stuff
+
+require('neodev').setup {}
 -- Mason, note that this must be setup before lsp-zero
 require("mason").setup {}
 require("mason-lspconfig").setup {
