@@ -157,6 +157,12 @@ return require('packer').startup(function(use)
     -- Autocompletion for neovim config stuff
     use 'folke/neodev.nvim'
 
+    -- debugging
+    use 'mfussenegger/nvim-dap'
+    use 'mfussenegger/nvim-dap-python'
+    use 'jay-babu/mason-nvim-dap.nvim'
+    use 'rcarriga/nvim-dap-ui'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

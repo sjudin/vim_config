@@ -12,6 +12,11 @@ require('mason-tool-installer').setup {
         "cpplint",
     }
 }
+require('mason-nvim-dap').setup {
+    ensure_installed = {
+        "python" -- debugpy
+    }
+}
 
 local lsp = require('lsp-zero').preset({
     setup_servers_on_start = true,
