@@ -23,3 +23,5 @@ vim.keymap.set("t", "<leader><esc>", [[<c-\><c-n>]])
 -- Moving up/down also centers (with slight offset)
 vim.keymap.set("n", "<C-d>", "<C-d>zz5j")
 vim.keymap.set("n", "<C-u>", "<C-u>zz5k")
+
+vim.keymap.set('v', '<LeftRelease>', '"+y', { desc = 'yank on mouse selection', noremap = true })
