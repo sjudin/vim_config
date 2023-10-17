@@ -99,6 +99,9 @@ return require('packer').startup(function(use)
             -- presets for efm language server
             { 'creativenull/efmls-configs-nvim' },
 
+            -- Code action lightbulb
+            { 'kosayoda/nvim-lightbulb' }
+
         }
     }
 
