@@ -160,6 +160,14 @@ return require('packer').startup(function(use)
     -- Autocompletion for neovim config stuff
     use 'folke/neodev.nvim'
 
+    -- Autocorrection for common spelling misstakes
+    use {
+        "https://git.sr.ht/~swaits/thethethe.nvim",
+        config = function()
+            require("thethethe").setup()
+        end
+    }
+
     -- debugging
     use 'mfussenegger/nvim-dap'
     use 'mfussenegger/nvim-dap-python'
