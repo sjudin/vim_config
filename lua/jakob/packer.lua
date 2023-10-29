@@ -174,6 +174,9 @@ return require('packer').startup(function(use)
     use 'jay-babu/mason-nvim-dap.nvim'
     use 'rcarriga/nvim-dap-ui'
 
+    -- support for editing .kbd files
+    use('kmonad/kmonad-vim')
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
