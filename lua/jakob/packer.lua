@@ -146,7 +146,9 @@ return require('packer').startup(function(use)
     end }
 
     -- startup dashboard
-    use { 'glepnir/dashboard-nvim', commit = '4dac085331b6c6ccb98a7057bf7b2df424ccc088' }
+    use {
+        'mhinz/vim-startify'
+    }
 
     use { "asiryk/auto-hlsearch.nvim",
         config = function()
