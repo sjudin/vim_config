@@ -43,9 +43,6 @@ return require('packer').startup(function(use)
     -- color scheme
     use "ellisonleao/gruvbox.nvim"
     use 'sainnhe/gruvbox-material'
-    use 'olimorris/onedarkpro.nvim'
-    use 'folke/tokyonight.nvim'
-    use 'marko-cerovac/material.nvim'
 
     -- treesitter
     use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } }
@@ -54,17 +51,10 @@ return require('packer').startup(function(use)
         requires = { 'nvim-treesitter/nvim-treesitter' },
     }
 
-    -- Automatically convert into f-string in python
-    -- use {
-    --     "chrisgrieser/nvim-puppeteer",
-    --     requires = "nvim-treesitter/nvim-treesitter",
-    -- }
-
     -- Leap
     use 'ggandor/leap.nvim'
 
     -- Rainbow parentheses
-    -- use 'mrjones2014/nvim-ts-rainbow'
     use 'HiPhish/rainbow-delimiters.nvim'
 
     -- LSP stuff
@@ -175,9 +165,6 @@ return require('packer').startup(function(use)
     use 'mfussenegger/nvim-dap-python'
     use 'jay-babu/mason-nvim-dap.nvim'
     use 'rcarriga/nvim-dap-ui'
-
-    -- support for editing .kbd files
-    use('kmonad/kmonad-vim')
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
