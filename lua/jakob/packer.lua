@@ -90,7 +90,18 @@ return require('packer').startup(function(use)
             { 'creativenull/efmls-configs-nvim' },
 
             -- Code action lightbulb
-            { 'kosayoda/nvim-lightbulb' }
+            { 'kosayoda/nvim-lightbulb' },
+
+            -- Show current code context in winbar
+            use({
+                "utilyre/barbecue.nvim",
+                tag = "*",
+                requires = {
+                    "SmiteshP/nvim-navic",
+                    "nvim-tree/nvim-web-devicons", -- optional dependency
+                },
+                after = "nvim-web-devicons",       -- keep this if you're using NvChad
+            })
 
         }
     }
