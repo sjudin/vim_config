@@ -5,7 +5,7 @@ local conditions = {
         return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
     end,
     hide_in_width = function()
-        return vim.fn.winwidth(0) > 100
+        return vim.fn.winwidth(0) > 80
     end,
     check_git_workspace = function()
         local filepath = vim.fn.expand('%:p:h')
@@ -53,7 +53,9 @@ local config = {
             }
         },
         lualine_b = {
-            "branch", "diff", "diagnostics",
+            function() return "" end,
+            "diff",
+            { "diagnostics", cond = conditions.hide_in_width }
         },
         lualine_c = {
             "filename", { get_attached_lsp, cond = conditions.hide_in_width }
