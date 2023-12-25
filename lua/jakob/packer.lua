@@ -46,6 +46,9 @@ return require('packer').startup(function(use)
 
     -- treesitter
     use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } }
+    use { 'nvim-treesitter/nvim-treesitter-textobjects',
+        after = { 'nvim-treesitter' }, requires = {
+        'nvim-treesitter/nvim-treesitter' } }
     use {
         'm-demare/hlargs.nvim',
         requires = { 'nvim-treesitter/nvim-treesitter' },
