@@ -1,3 +1,7 @@
+return {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
     ensure_installed = {},
@@ -41,4 +45,8 @@ require 'nvim-treesitter.configs'.setup {
     matchup = {
         enable = true,
     }
+}
+end
+
+
 }

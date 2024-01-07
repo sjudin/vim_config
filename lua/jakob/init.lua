@@ -1,7 +1,8 @@
 require("jakob.set")
 require("jakob.remap")
-require("jakob.packer")
+require("jakob.lazy")
 
+vim.cmd.colorscheme("gruvbox-material")
 
 -- ------------
 -- Autocommands
