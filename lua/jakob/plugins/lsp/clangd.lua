@@ -1,6 +1,6 @@
 local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.offsetEncoding = { "utf-16" }
+capabilities['offsetEncoding'] = { "utf-16" }
 
 lspconfig.clangd.setup({
     -- For C++ files we want "gi" to use the clangd functionality to switch

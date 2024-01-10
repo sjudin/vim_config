@@ -34,14 +34,12 @@ return {
             return msg
         end
 
-        local custom_gruxbox = require('lualine.themes.gruvbox')
 
         -- Config
         local config = {
             options = {
                 component_separators = '',
                 section_separators = '',
-                theme = custom_gruxbox,
                 disabled_filetypes = {
                     statusline = { 'packer', 'NvimTree' }
                 }

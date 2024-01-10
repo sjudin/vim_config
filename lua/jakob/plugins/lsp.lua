@@ -80,8 +80,8 @@ return {
 
             -- Diagnostics
             vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "(lsp) [gl]ine diagnostics" })
-            vim.keymap.set('n', 'gj', vim.diagnostic.goto_next, { desc = "(lsp) [gj] diagnostic jump next" })
-            vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, { desc = "(lsp) [gk] diagnostic jump previous" })
+            vim.keymap.set('n', '<C-[>', vim.diagnostic.goto_prev, { desc = "(lsp) [gk] diagnostic jump previous" })
+            vim.keymap.set('n', '<C-]>', vim.diagnostic.goto_next, { desc = "(lsp) [gj] diagnostic jump next" })
 
             -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "(lsp) [g]oto [i]mplementation" })
 
