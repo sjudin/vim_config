@@ -25,3 +25,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz5j")
 vim.keymap.set("n", "<C-u>", "<C-u>zz5k")
 
 vim.keymap.set('v', '<LeftRelease>', '"+y', { desc = 'yank on mouse selection', noremap = true })
+
+-- Delete forward in insert mode
+vim.keymap.set('i', '<C-L>', '<C-O>x')
+
