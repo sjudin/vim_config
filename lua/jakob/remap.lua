@@ -29,3 +29,21 @@ vim.keymap.set('v', '<LeftRelease>', '"+y', { desc = 'yank on mouse selection', 
 -- Delete forward in insert mode
 vim.keymap.set('i', '<C-L>', '<C-O>x')
 
+vim.keymap.set('n', '<C-s>w', ':%s/<C-r><C-w>//gc<Left><Left><Left>')
+
+-- Switch between paren/curly/straight etc
+vim.keymap.set('n', '<C-s>({', [[:.s/(\(.*\))/{\1}/c<CR>]])
+vim.keymap.set('n', '<C-s>([', [[:.s/(\(.*\))/[\1]/c<CR>]])
+vim.keymap.set('n', '<C-s>(<', [[:.s/(\(.*\))/<\1>/c<CR>]])
+
+vim.keymap.set('n', '<C-s>[{', [[:.s/\[\(.*\)\]/{\1}/c<CR>]])
+vim.keymap.set('n', '<C-s>[(', [[:.s/\[\(.*\)\]/(\1)/c<CR>]])
+vim.keymap.set('n', '<C-s>[<', [[:.s/\[\(.*\)\]/<\1>/c<CR>]])
+
+vim.keymap.set('n', '<C-s>{[', [[:.s/{\(.*\)}/[\1]/c<CR>]])
+vim.keymap.set('n', '<C-s>{(', [[:.s/{\(.*\)}/(\1)/c<CR>]])
+vim.keymap.set('n', '<C-s>{<', [[:.s/{\(.*\)}/<\1>/c<CR>]])
+
+vim.keymap.set('n', '<C-s><[', [[:.s/<\(.*\)>/[\1]/c<CR>]])
+vim.keymap.set('n', '<C-s><(', [[:.s/<\(.*\)>/(\1)/c<CR>]])
+vim.keymap.set('n', '<C-s><{', [[:.s/<\(.*\)>/{\1}/c<CR>]])
