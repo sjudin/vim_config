@@ -50,6 +50,9 @@ vim.opt.visualbell = true
 vim.o.list = true
 -- vim.o.listchars = "eol:⏎,tab:▸·,trail:×,nbsp:⎵"
 
+-- Hide statusline
+vim.o.laststatus = 0
+
 -- show cursorcolumn
 vim.o.cursorline = true
 vim.o.cursorcolumn = false
