@@ -97,6 +97,16 @@ return {
         require('jakob.plugins.lsp.lua_ls')
         require('jakob.plugins.lsp.efm')
 
+        local configs = require 'lspconfig.configs'
+        if not configs.pylance then
+            configs.pylance = require('jakob.plugins.lsp.pylance')
+        end
+
+        require 'lspconfig'.pyright.setup {
+            autostart = false
+        }
+        require 'lspconfig'.pylance.setup {}
+
         lsp.setup()
 
         require('jakob.plugins.lsp.nvim-lightbulb')
