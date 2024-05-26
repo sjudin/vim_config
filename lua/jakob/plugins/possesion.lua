@@ -14,7 +14,7 @@ return {
                 -- Close terminal buffers when the session is changed
                 delete_hidden_buffers = {
                     force = function(buf)
-                        return vim.api.nvim_buf_get_option(buf, 'buftype') == 'terminal'
+                        return vim.api.nvim_get_option_value("buftype", { buf = buf }) == 'terminal'
                     end
                 }
             },
