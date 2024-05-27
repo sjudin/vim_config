@@ -37,6 +37,7 @@
   "oil.nvim": { "branch": "master", "commit": "2cb39e838e9dcd8b374f09a3a87a2e5ec9d372f6" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "possession.nvim": { "branch": "master", "commit": "b14d3400d86e9ac9b52c335a585986509670f2e4" },
+  "quick-scope": { "branch": "master", "commit": "256d81e391a22eeb53791ff62ce65f870418fa71" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "849803e0a687c6ef7c9a0d305bd4d441017b8abf" },
   "telescope.nvim": { "branch": "master", "commit": "c2ce039188e22288449e43b77710036e69a45a70" },
   "vim-exchange": { "branch": "master", "commit": "d6c1e9790bcb8df27c483a37167459bbebe0112e" },
