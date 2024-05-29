@@ -43,6 +43,7 @@ return {
         settings = {
             python = {
                 analysis = {
+                    typeCheckingMode="basic",
                     inlayHints = {
                         variableTypes = true,
                         functionReturnTypes = false,
