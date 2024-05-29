@@ -16,6 +16,15 @@ local function exepath(expr)
     return ep ~= "" and ep or nil
 end
 
+local function int_to_bool(int)
+    if int == 1 then
+        return true
+    end
+    return false
+end
+
+local pylance_path = vim.fn.expand("~/.vscode/extensions/ms-python.vscode-pylance-2024.2.1/dist/server_nvim.js")
+
 return {
     default_config = {
         before_init = function(_, config)
@@ -26,12 +35,9 @@ return {
                 config.settings.python.pythonPath = exepath("python3") or exepath("python") or "python"
             end
         end,
-        cmd = {
-            "node",
-            vim.fn.expand("~/.vscode/extensions/ms-python.vscode-pylance-2024.2.1/dist/server_nvim.js", false, true)[1],
-            "--stdio",
-        },
+        cmd = { "node", pylance_path, "--stdio" },
         filetypes = { "python" },
+        autostart = int_to_bool(vim.fn.filereadable(pylance_path)),
         single_file_support = true,
         root_dir = util.root_pattern(unpack(root_files)),
         settings = {

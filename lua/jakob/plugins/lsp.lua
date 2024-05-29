@@ -102,10 +102,11 @@ return {
             configs.pylance = require('jakob.plugins.lsp.pylance')
         end
 
-        require 'lspconfig'.pyright.setup {
-            autostart = false
-        }
         require 'lspconfig'.pylance.setup {}
+        -- Use pyright as a fallback if pylance does not exist
+        require 'lspconfig'.pyright.setup {
+            autostart = not configs["pylance"]["autostart"]
+        }
 
         lsp.setup()
 
