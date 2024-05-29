@@ -88,6 +88,10 @@ return {
 
             -- Formatting
             vim.keymap.set('n', 'gm', vim.lsp.buf.format, { desc = "(lsp) [g]o for[m]at" })
+
+            if client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(true, {bufnr=bufnr})
+            end
         end
         )
 
