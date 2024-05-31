@@ -57,3 +57,5 @@ vim.o.laststatus = 0
 -- show cursorcolumn
 vim.o.cursorline = true
 vim.o.cursorcolumn = false
+
+vim.o.clipboard = "unnamedplus"
