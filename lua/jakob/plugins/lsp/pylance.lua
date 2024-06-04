@@ -1,6 +1,9 @@
 -- cd ~/.vscode/extensions/ms-python.vscode-pylance-*/dist &&awk 'BEGIN{RS=ORS=";"} /if\(!process/ && !found {sub(/return!0x1/, "return!0x0"); found=1} 1' server.bundle.js |awk 'BEGIN{RS=ORS=";"} /throw new/ && !found {sub(/throw new/, ""); found=1} 1' > server_nvim.js
 -- Tested for pylance 2024.2.1
 
+-- cd ~/.vscode/extensions/ms-python.vscode-pylance-*/dist &&perl -pe 's/if\(!process.*?\)return!\[\];/if(false)return false;/g; s/throw new//g' server.bundle.js > server_nvim.js 
+-- Tested for pylance 2024.5.1
+
 local util = require("lspconfig.util")
 
 local root_files = {
@@ -23,7 +26,7 @@ local function int_to_bool(int)
     return false
 end
 
-local pylance_path = vim.fn.expand("~/.vscode/extensions/ms-python.vscode-pylance-2024.2.1/dist/server_nvim.js")
+local pylance_path = vim.fn.expand("~/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist/server_nvim.js")
 
 return {
     default_config = {
