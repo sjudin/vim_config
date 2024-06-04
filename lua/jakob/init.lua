@@ -91,11 +91,11 @@ local nvim_version = vim.version()
 -- Fix neovims janky comments
 if (nvim_version.major >= 0 and nvim_version.minor >= 10) then
     vim.api.nvim_create_autocmd({ 'FileType' }, {
-      desc = 'Force commentstring to include spaces',
-      -- group = ...,
-      callback = function(event)
-        local cs = vim.bo[event.buf].commentstring
-        vim.bo[event.buf].commentstring = cs:gsub('(%S)%%s', '%1 %%s'):gsub('%%s(%S)', '%%s %1')
-      end,
+        desc = 'Force commentstring to include spaces',
+        -- group = ...,
+        callback = function(event)
+            local cs = vim.bo[event.buf].commentstring
+            vim.bo[event.buf].commentstring = cs:gsub('(%S)%%s', '%1 %%s'):gsub('%%s(%S)', '%%s %1')
+        end,
     })
 end
