@@ -47,12 +47,8 @@ vim.opt.sessionoptions = vim.opt.sessionoptions - "buffers"
 
 vim.opt.visualbell = true
 
--- make tab, etc visible
-vim.o.list = true
--- vim.o.listchars = "eol:⏎,tab:▸·,trail:×,nbsp:⎵"
-
 -- Hide statusline
-vim.o.laststatus = 0
+vim.o.laststatus = 3
 
 -- show cursorcolumn
 vim.o.cursorline = true
