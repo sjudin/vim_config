@@ -1,5 +1,5 @@
 local lspconfig = require('lspconfig')
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities['offsetEncoding'] = { "utf-16" }
 
 lspconfig.clangd.setup({

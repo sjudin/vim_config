@@ -1,6 +1,7 @@
 require("jakob.set")
 require("jakob.remap")
 require("jakob.lazy")
+require("jakob.lsp")
 
 local color = "gruvbox-material"
 
