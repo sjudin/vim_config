@@ -18,6 +18,12 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Moving between buffers
+vim.keymap.set("n", "<space>h", "<c-w>h")
+vim.keymap.set("n", "<space>j", "<c-w>j")
+vim.keymap.set("n", "<space>k", "<c-w>k")
+vim.keymap.set("n", "<space>l", "<c-w>l")
+
 -- keep escape behaviour in terminal
 vim.keymap.set("t", "<leader><esc>", [[<c-\><c-n>]])
 
