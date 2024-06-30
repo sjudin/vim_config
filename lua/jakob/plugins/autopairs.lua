@@ -1,6 +1,6 @@
 return {
     'windwp/nvim-autopairs',
-    enabled = false,
+    enabled = true,
     config = function()
         local function is_template()
             local unpack = table.unpack or unpack
