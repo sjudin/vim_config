@@ -13,6 +13,6 @@ lspconfig.clangd.setup({
         )
     end,
 
-    cmd = { "clangd", "--header-insertion=never" },
+    cmd = { "clangd", "--header-insertion=never", "--background-index", "-j=8" },
     capabilities = capabilities
 })
