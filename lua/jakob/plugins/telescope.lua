@@ -11,10 +11,6 @@ return {
             pickers = {
                 colorscheme = {
                     enable_preview = true
-                },
-                lsp_references = {
-                    path_display = { "tail" },
-                    fname_width = 30
                 }
             },
             defaults = {
@@ -24,7 +20,8 @@ return {
                         ["<C-k>"] = actions.move_selection_previous,
                         ["<C-a>"] = actions.smart_send_to_qflist + actions.open_qflist,
                     }
-                }
+                },
+                path_display = { "filename_first" }
             },
             extensions = {
                 aerial = {

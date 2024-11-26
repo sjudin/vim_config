@@ -38,8 +38,8 @@ vim.keymap.set('i', '<C-L>', '<C-O>x')
 
 vim.keymap.set('n', '<C-s>w', ':%s/<C-r><C-w>//gc<Left><Left><Left>')
 
-vim.keymap.set('n', '(', ':bprev<CR>', { silent = true })
-vim.keymap.set('n', ')', ':bnext<CR>', { silent = true })
+vim.keymap.set('n', '(', ':b#<CR>zz', { silent = true })
+vim.keymap.set('n', ')', ':b#<CR>zz', { silent = true })
 
 -- Switch between paren/curly/straight etc
 vim.keymap.set('n', '<C-s>({', [[:.s/(\(.*\))/{\1}/c<CR>]])
