@@ -57,3 +57,5 @@ vim.keymap.set('n', '<C-s>{<', [[:.s/{\(.*\)}/<\1>/c<CR>]])
 vim.keymap.set('n', '<C-s><[', [[:.s/<\(.*\)>/[\1]/c<CR>]])
 vim.keymap.set('n', '<C-s><(', [[:.s/<\(.*\)>/(\1)/c<CR>]])
 vim.keymap.set('n', '<C-s><{', [[:.s/<\(.*\)>/{\1}/c<CR>]])
+
+vim.keymap.set({ 'n', 't' }, '<C-t>', require('jakob.misc.toggleterm').toggleterm, { desc = 'toggle terminal' })
