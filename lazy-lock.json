@@ -40,6 +40,7 @@
   "possession.nvim": { "branch": "master", "commit": "138c3ca4032119398026c19f8c6b4b862c0dc54d" },
   "quick-scope": { "branch": "master", "commit": "f2b6043e04d9ef05205c8953e389304a4c1946f2" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "cf0da2516b0684596b09c51dbc93c609cdc2f455" },
+  "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "stickybuf.nvim": { "branch": "master", "commit": "61ec81b9de2a76bfcfaa579f16bf88395b58b814" },
   "telescope.nvim": { "branch": "master", "commit": "415af52339215926d705cccc08145f3782c4d132" },
   "vim-exchange": { "branch": "master", "commit": "d6c1e9790bcb8df27c483a37167459bbebe0112e" },
