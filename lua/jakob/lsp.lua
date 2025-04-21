@@ -3,6 +3,9 @@
 
 require('jakob.misc.lsp-progress')
 
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.lsp.config("*", { capabilities = lsp_capabilities })
+
 vim.diagnostic.config({
     float = { border = 'rounded' },
     virtual_text = false,
@@ -23,8 +26,16 @@ end
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
-        -- local client = vim.lsp.get_client_by_id(args.data.client_id)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
         -- print(string.format("Attaching %s to buffer %d", client.name, args.buf))
+
+        -- For C++ files we want "gi" to use the clangd functionality to switch
+        -- between source and header files.
+        if client ~= nil and client.name == "clangd" then
+            vim.keymap.set("n", "gi", vim.cmd.ClangdSwitchSourceHeader,
+                { desc = "(lsp, C++) [gi] switch source/header", noremap = true, buffer = args.buf }
+            )
+        end
 
         -- LSP actions
         map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, args.buf, "(lsp) [c]ode [a]ction")

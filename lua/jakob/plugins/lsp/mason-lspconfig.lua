@@ -9,27 +9,15 @@ return {
         ensure_installed = { "clangd", "efm", "pyright", "cmake", "lua_ls", "jsonls" },
         handlers = {
             function(server_name)
-                local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-                require("lspconfig")[server_name].setup {
-                    capabilities = lsp_capabilities
-                }
+                vim.lsp.enable(server_name)
             end,
-
-            ["clangd"] = function()
-                require('jakob.lsp_servers.clangd')
-            end,
-            ["efm"] = function()
-                require('jakob.lsp_servers.efm')
-            end,
-            ["lua_ls"] = function()
-                require('jakob.lsp_servers.lua_ls')
-            end,
+            -- Handle pyright on its own since we want to launch pylance instead of pyright if it is available
             ["pyright"] = function()
-                local configs = require 'lspconfig.configs'
-                -- Use pyright as a fallback if pylance does not exist
-                require 'lspconfig'.pyright.setup {
-                    autostart = not configs["pylance"]["autostart"]
-                }
+                if pylance_available() then
+                    vim.lsp.enable("pylance")
+                else
+                    vim.lsp.enable("pyright")
+                end
             end
         }
     }

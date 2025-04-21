@@ -4,7 +4,6 @@
 -- works, have a look at
 -- https://github.com/lukas-reineke/dotfiles/blob/master/vim/lua/lsp/init.lua
 
-local lspconfig = require('lspconfig')
 local sourceText = require('efmls-configs.utils').sourceText
 local fs = require('efmls-configs.fs')
 
@@ -28,7 +27,9 @@ local cppcheck = {
     rootMarkers = { 'CmakeLists.txt', 'compile_commands.json', '.git' },
 }
 
-lspconfig.efm.setup({
+---@type vim.lsp.Config
+return {
+    cmd = { "efm-langserver" },
     init_options = { documentFormatting = true },
     -- filetypes = { "python" },
     settings = {
@@ -53,4 +54,4 @@ lspconfig.efm.setup({
             }
         }
     }
-})
+}
