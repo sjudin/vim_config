@@ -29,7 +29,6 @@ local cppcheck = {
 
 ---@type vim.lsp.Config
 return {
-    cmd = { "efm-langserver" },
     init_options = { documentFormatting = true },
     -- filetypes = { "python" },
     settings = {
