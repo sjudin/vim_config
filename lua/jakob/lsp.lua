@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- For C++ files we want "gi" to use the clangd functionality to switch
         -- between source and header files.
         if client ~= nil and client.name == "clangd" then
-            vim.keymap.set("n", "gi", vim.cmd.ClangdSwitchSourceHeader,
+            vim.keymap.set("n", "gi", vim.cmd.LspClangdSwitchSourceHeader,
                 { desc = "(lsp, C++) [gi] switch source/header", noremap = true, buffer = args.buf }
             )
         end
