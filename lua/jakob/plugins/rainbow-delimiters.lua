@@ -14,5 +14,6 @@ return {
                 lua = 'rainbow-blocks',
             },
         }
-    end
+    end,
+    submodules = false
 }
