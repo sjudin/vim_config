@@ -40,14 +40,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- LSP actions
         map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, args.buf, "(lsp) [c]ode [a]ction")
         map('n', '<leader>rn', vim.lsp.buf.rename, args.buf, "(lsp) [r]e[n]ame")
-        map('n', 'K', function() vim.lsp.buf.hover { border = "rounded" } end, args.buf, "(lsp) [K]hover doc")
+        map('n', 'gK', function() vim.lsp.buf.hover { border = "rounded" } end, args.buf, "(lsp) [K]hover doc")
 
         map('n', 'gd', vim.lsp.buf.definition, args.buf, "(lsp) [g]o [d]efinition")
         map('n', 'gD', vim.lsp.buf.declaration, args.buf, "(lsp) [g]oto [D]eclaration")
         map('n', 'go', vim.lsp.buf.type_definition, args.buf, "(lsp) [go] type definition")
         map('n', 'gr', function() vim.cmd.Telescope { args = { 'lsp_references' } } end, args.buf,
             "(lsp) [g]oto [r]eferences")
-        map('n', '<C-k>', vim.lsp.buf.signature_help, args.buf, "(lsp) [<C-k>] signature help")
+        -- map('n', '<C-k>', vim.lsp.buf.signature_help, args.buf, "(lsp) [<C-k>] signature help")
 
         -- Diagnostics
         map('n', 'gl', vim.diagnostic.open_float, args.buf, "(lsp) [gl]ine diagnostics")
