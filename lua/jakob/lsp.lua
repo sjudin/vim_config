@@ -24,6 +24,12 @@ local map = function(m, lhs, rhs, bufnr, desc)
     vim.keymap.set(m, lhs, rhs, key_opts)
 end
 
+if pylance_available() then
+    vim.lsp.enable("pylance")
+else
+    vim.lsp.enable("pyright")
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -40,7 +46,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- LSP actions
         map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, args.buf, "(lsp) [c]ode [a]ction")
         map('n', '<leader>rn', vim.lsp.buf.rename, args.buf, "(lsp) [r]e[n]ame")
-        map('n', 'gK', function() vim.lsp.buf.hover { border = "rounded" } end, args.buf, "(lsp) [K]hover doc")
+        map('n', 'gk', function() vim.lsp.buf.hover { border = "rounded" } end, args.buf, "(lsp) [K]hover doc")
 
         map('n', 'gd', vim.lsp.buf.definition, args.buf, "(lsp) [g]o [d]efinition")
         map('n', 'gD', vim.lsp.buf.declaration, args.buf, "(lsp) [g]oto [D]eclaration")

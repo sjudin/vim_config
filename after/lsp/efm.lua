@@ -27,6 +27,9 @@ local cppcheck = {
     rootMarkers = { 'CmakeLists.txt', 'compile_commands.json', '.git' },
 }
 
+local flake8 = require('efmls-configs.linters.flake8')
+table.insert(flake8["rootMarkers"], "pyproject.toml")
+
 ---@type vim.lsp.Config
 return {
     init_options = { documentFormatting = true },
@@ -37,7 +40,7 @@ return {
             ["="] = { misspell },
             python = {
                 require('efmls-configs.formatters.black'),
-                require('efmls-configs.linters.flake8'),
+                flake8,
                 {
                     formatCommand = "isort --stdout ${-l:lineLength} --profile black -",
                     formatStdin = true,

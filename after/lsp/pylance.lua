@@ -4,14 +4,11 @@
 -- cd ~/.vscode/extensions/ms-python.vscode-pylance-*/dist &&perl -pe 's/if\(!process.*?\)return!\[\];/if(false)return false;/g; s/throw new//g' server.bundle.js > server_nvim.js
 -- Tested for pylance 2024.5.1
 
-local util = require("lspconfig.util")
-
 local root_files = {
     "pyproject.toml",
     "setup.py",
     "setup.cfg",
     "requirements.txt",
-    "Pipfile",
 }
 
 local function exepath(expr)
@@ -24,7 +21,7 @@ return
 {
     cmd = { "node", pylance_path, "--stdio" },
     filetypes = { "python" },
-    root_markers = util.root_pattern(unpack(root_files)),
+    root_markers = root_files,
     settings = {
         python = {
             analysis = {
