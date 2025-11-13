@@ -78,15 +78,13 @@ autocmd('WinLeave',
         end
     })
 
--- Detect Jenkinsfiles and set the filetype to groovy
-autocmd({ 'BufNewFile', 'BufRead' },
-    {
-        group = augroup("jenkinsfile_set_filetype_group", {}),
-        pattern = "Jenkinsfile*",
-        callback = function()
-            vim.cmd [[set filetype=groovy]]
-        end
-    })
+-- add custom file ending matches for different filetypes
+vim.filetype.add({
+    extension = {
+        schema = "json",
+        groovy = "Jenkinsfile"
+    }
+})
 
 local nvim_version = vim.version()
 -- Fix neovims janky comments
