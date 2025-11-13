@@ -6,10 +6,8 @@
 return {
     'm-demare/hlargs.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-        require('hlargs').setup({
-            excluded_filetypes = {"c", "cpp"},
-            hl_priority = vim.highlight.priorities.semantic_tokens + 1
-        })
-    end
+    opts = {
+        excluded_filetypes = { "c", "cpp" },
+        hl_priority = vim.highlight.priorities.semantic_tokens + 1
+    }
 }
