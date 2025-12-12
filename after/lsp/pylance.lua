@@ -2,7 +2,7 @@
 -- Tested for pylance 2024.2.1
 
 -- cd ~/.vscode/extensions/ms-python.vscode-pylance-*/dist &&perl -pe 's/if\(!process.*?\)return!\[\];/if(false)return false;/g; s/throw new//g' server.bundle.js > server_nvim.js
--- Tested for pylance 2024.5.1
+-- Tested for pylance 2024.5.1, 2025.10.4
 
 local root_files = {
     "pyproject.toml",

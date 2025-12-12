@@ -1,4 +1,4 @@
-pylance_path = vim.fn.expand("~/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist/server_nvim.js")
+pylance_path = vim.fn.expand("~/.vscode/extensions/ms-python.vscode-pylance-2025.10.4/dist/server_nvim.js")
 
 local function int_to_bool(int)
     if int == 1 then
