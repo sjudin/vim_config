@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Formatting
         map('n', 'gm', vim.lsp.buf.format, args.buf, "(lsp) [g]o for[m]at")
 
-        -- if client.server_capabilities.inlayHintProvider then
+        -- if client.supports_method(client, "inlayHintProvider") then
         --     vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
         -- end
     end
