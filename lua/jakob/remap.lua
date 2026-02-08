@@ -37,6 +37,7 @@ vim.keymap.set('v', '<LeftRelease>', '"+y', { desc = 'yank on mouse selection', 
 vim.keymap.set('i', '<C-L>', '<C-O>x')
 
 vim.keymap.set('n', '<C-s>w', ':%s/<C-r><C-w>//gc<Left><Left><Left>')
+vim.keymap.set('v', '<C-s>w', ':%s/<C-r><C-w>//gc<Left><Left><Left>')
 
 vim.keymap.set('n', '(', ':b#<CR>zz', { silent = true })
 vim.keymap.set('n', ')', ':b#<CR>zz', { silent = true })
