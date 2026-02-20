@@ -55,7 +55,7 @@ return {
                     -- we want to use for git files, so we have to override the override
                     local builtin = require('telescope.builtin')
                     vim.keymap.set('n', '<C-p>', builtin.git_files,
-                        { buffer = true, desc = "(Telescope) [C-p] git files" })
+                        { buffer = true, desc = "(Telescope) <C-p> Git files" })
 
                     -- Normal buffer movement gets overridden but we can use <C-*> variants
                     vim.keymap.set('n', '<C-j>', function() starter.update_current_item('next') end, { buffer = true })
