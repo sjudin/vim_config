@@ -53,6 +53,9 @@ return {
             },
             c = {
                 require('efmls-configs.linters.gcc'),
+            },
+            make = {
+                require('efmls-configs.linters.checkmake'),
             }
         }
     }
