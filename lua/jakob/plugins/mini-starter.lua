@@ -62,8 +62,8 @@ return {
                     vim.keymap.set('n', '<C-k>', function() starter.update_current_item('prev') end, { buffer = true })
 
                     return content
-                end
-                -- starter.gen_hook.aligning('center', 'center'),
+                end,
+                starter.gen_hook.aligning('center', 'center'),
             },
             header = header_art_1,
             footer = '',
