@@ -3,7 +3,6 @@ return {
     dependencies = {
         'mason-org/mason.nvim',
         'neovim/nvim-lspconfig',
-        'hrsh7th/cmp-nvim-lsp',
     },
     opts = {
         ensure_installed = { "clangd", "efm", "pyright", "cmake", "lua_ls", "jsonls", "bashls" },

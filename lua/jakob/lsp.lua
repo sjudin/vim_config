@@ -3,9 +3,6 @@
 
 require('jakob.misc.lsp-progress')
 
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-vim.lsp.config("*", { capabilities = lsp_capabilities })
-
 vim.diagnostic.config({
     float = { border = 'rounded' },
     virtual_text = false,
