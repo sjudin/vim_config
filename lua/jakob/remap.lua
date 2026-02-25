@@ -1,8 +1,5 @@
 vim.g.mapleader = " "
 
--- Paste visual selection without overwriting register
-vim.keymap.set("v", "<leader>p", '"_dP')
-
 -- keep cursor centered on jump
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -12,17 +9,10 @@ vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", "?", "?<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", "!", "!<c-g>u")
-vim.keymap.set("i", "jk", "<Esc>")
 
 -- moving selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- Moving between buffers (commented out in favor or trying vim-tmux-navigator)
--- vim.keymap.set("n", "<space>h", "<c-w>h")
--- vim.keymap.set("n", "<space>j", "<c-w>j")
--- vim.keymap.set("n", "<space>k", "<c-w>k")
--- vim.keymap.set("n", "<space>l", "<c-w>l")
 
 -- keep escape behaviour in terminal
 vim.keymap.set("t", "<leader><esc>", [[<c-\><c-n>]])
@@ -37,7 +27,7 @@ vim.keymap.set('v', '<LeftRelease>', '"+y', { desc = 'yank on mouse selection', 
 vim.keymap.set('i', '<C-L>', '<C-O>x')
 
 vim.keymap.set('n', '<C-s>w', ':%s/<C-r><C-w>//gc<Left><Left><Left>')
-vim.keymap.set('v', '<C-s>w', ':%s/<C-r><C-w>//gc<Left><Left><Left>')
+vim.keymap.set('v', '<C-s>w', ':s//gc<Left><Left><Left>')
 
 vim.keymap.set('n', '(', ':b#<CR>zz', { silent = true })
 vim.keymap.set('n', ')', ':b#<CR>zz', { silent = true })
@@ -61,6 +51,3 @@ vim.keymap.set('n', '<C-s><{', [[:.s/<\(.*\)>/{\1}/c<CR>]])
 
 -- Duplicate current line below and comment out
 vim.keymap.set("n", "ycc", "yygccp", { remap = true })
-
-
-
