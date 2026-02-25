@@ -2,7 +2,6 @@ return {
     -- original authors repo was removed, use a backup instead
     -- "ariel-frischer/bmessages.nvim",
     "catgoose/bmessages.nvim",
-    event = "CmdlineEnter",
     opts = {
         split_type = "split"
     },
