@@ -22,6 +22,11 @@ require("lazy").setup(
         }
     },
     {
-        change_detection = { notify = false }
+        change_detection = { notify = false },
+        performance = {
+            rtp = {
+                paths = { "/usr/share/nvim/site" },
+            },
+        },
     }
 )

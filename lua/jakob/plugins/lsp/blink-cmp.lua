@@ -131,7 +131,11 @@ return {
         },
 
         sources = {
-            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
+            per_filetype = {
+                ghostty = { inherit_defaults = true, 'omni' },
+                lua = { inherit_defaults = true, 'lazydev' }
+            },
             providers = {
                 lazydev = {
                     name = "LazyDev",
