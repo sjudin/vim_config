@@ -1,52 +1,45 @@
 return {
     'nvim-treesitter/nvim-treesitter',
-    branch="master",
-    main="nvim-treesitter.configs",
+    branch = "main",
+    lazy = false,
     build = ':TSUpdate',
-    opts = {
-
-        -- A list of parser names, or "all"
-        ensure_installed = {},
-
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- Automatically install missing parsers when entering buffer
-        -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-        auto_install = true,
-
-        highlight = {
-            -- `false` will disable the whole extension
-            enable = true,
-
-            -- disable = { },
-            disable = function(lang, buf)
-                local max_filesize = 100 * 1024 -- 100 KB
-                local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                if ok and stats and stats.size > max_filesize then
-                    return true
-                end
-            end,
-
-            -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-            -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-            -- Using this option may scurl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | shlow down your editor, and you may see some duplicate highlights.
-            -- Instead of true it can also be a list of languages
-            additional_vim_regex_highlighting = false,
-
-        },
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = "<CR>",
-                node_incremental = "<CR>",
-                scope_incremental = "<S-CR>",
-                node_decremental = "<BS>",
-            },
-        },
-        matchup = {
-            enable = true,
+    config = function()
+        require('nvim-treesitter').install {
+            "c", "lua", "vim", "vimdoc", "python", "bash", "cpp"
         }
 
-    }
+        vim.api.nvim_create_autocmd("FileType", {
+            group = vim.api.nvim_create_augroup("treesitter_highlight", { clear = true }),
+            desc = "Auto-install parsers and set tree-sitter based indent",
+            callback = function(args)
+                local buf = args.buf
+                local ft = args.match
+
+                -- Ignore completely empty filetypes
+                if not ft or ft == "" then return end
+
+                local max_filesize = 100 * 1024 -- 100 KB
+                local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
+                if ok and stats and stats.size > max_filesize then
+                    return
+                end
+
+                local lang = vim.treesitter.language.get_lang(ft) or ft
+
+                if type(lang) == "string" and lang ~= "" then
+                    local installed = require('nvim-treesitter').get_installed()
+                    local available = require('nvim-treesitter').get_available()
+
+                    if vim.tbl_contains(installed, lang) then
+                        pcall(vim.treesitter.start, buf, lang)
+                        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    elseif vim.tbl_contains(available, lang) then
+                        pcall(function()
+                            require('nvim-treesitter').install({ lang })
+                        end)
+                    end
+                end
+            end
+        })
+    end
 }

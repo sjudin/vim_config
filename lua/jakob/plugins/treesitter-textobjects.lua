@@ -1,30 +1,24 @@
 return {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = "main",
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
-        require 'nvim-treesitter.configs'.setup {
-            textobjects = {
-                move = {
-                    enable = true,
-                    set_jumps = true, -- whether to set jumps in the jumplist
-                    goto_next_start = {
-                        ["]}"] = { query = { "@function.outer" },
-                            desc = "Next class/functon start" },
-                    },
-                    -- goto_next_end = {
-                    --     ["]M"] = "@function.outer",
-                    --     ["]["] = "@class.outer",
-                    -- },
-                    goto_previous_start = {
-                        ["[{"] = { query = { "@function.outer" },
-                            desc = "Previous class/functon start" },
-                    },
-                    -- goto_previous_end = {
-                    --     ["[M"] = "@function.outer",
-                    --     ["[]"] = "@class.outer",
-                    -- },
-                },
+        require("nvim-treesitter-textobjects").setup({
+            move = {
+                set_jumps = true,
             },
-        }
+        })
+
+        local move = require("nvim-treesitter-textobjects.move")
+        local modes = { "n", "x", "o" }
+
+        vim.keymap.set(modes, "]}", function()
+            move.goto_next_start("@function.outer", "textobjects")
+        end, { desc = "Next class/function start" })
+
+        vim.keymap.set(modes, "[{", function()
+            move.goto_previous_start("@function.outer", "textobjects")
+        end, { desc = "Previous class/function start" })
+
     end,
 }
