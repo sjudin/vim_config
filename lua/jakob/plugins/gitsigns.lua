@@ -1,8 +1,10 @@
 return {
     'lewis6991/gitsigns.nvim',
+    dependencies = { 'kiyoon/repeatable-move.nvim' },
     opts = {
         on_attach = function(bufnr)
-            local gs = package.loaded.gitsigns
+            local gitsigns = require('gitsigns')
+            local repeat_move = require("repeatable_move")
 
             local function map(mode, l, r, opts)
                 opts = opts or {}
@@ -11,19 +13,25 @@ return {
             end
 
             -- Navigation
-            map('n', 'J', function()
-                if vim.wo.diff then return ']c' end
-                vim.schedule(function() gs.next_hunk() end)
-                return '<Ignore>'
-            end, { expr = true })
+            local next_hunk = function()
+                if vim.wo.diff then
+                    vim.cmd.normal({ ']c', bang = true })
+                else
+                    gitsigns.nav_hunk('next', {}, function() vim.cmd.normal({ 'zz', bang = true }) end)
+                end
+            end
 
-            map('n', 'K', function()
-                if vim.wo.diff then return '[c' end
-                vim.schedule(function() gs.prev_hunk() end)
-                return '<Ignore>'
-            end, { expr = true })
+            local prev_hunk = function()
+                if vim.wo.diff then
+                    vim.cmd.normal({ '[c', bang = true })
+                else
+                    gitsigns.nav_hunk('prev', {}, function() vim.cmd.normal({ 'zz', bang = true }) end)
+                end
+            end
+
+            next_hunk, prev_hunk = repeat_move.make_repeatable_move_pair(next_hunk, prev_hunk)
+            map({ "n", "x", "o" }, "L", next_hunk)
+            map({ "n", "x", "o" }, "H", prev_hunk)
         end
-
-
     }
 }
