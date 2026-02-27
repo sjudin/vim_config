@@ -30,40 +30,50 @@ end
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
-        -- print(string.format("Attaching %s to buffer %d", client.name, args.buf))
+        local bufnr = args.buf
+        -- print(string.format("Attaching %s to buffer %d", client.name, bufnr))
 
         -- For C++ files we want "gi" to use the clangd functionality to switch
         -- between source and header files.
         if client ~= nil and client.name == "clangd" then
             vim.keymap.set("n", "gi", vim.cmd.LspClangdSwitchSourceHeader,
-                { desc = "(lsp, C++) [gi] switch source/header", noremap = true, buffer = args.buf }
+                { desc = "(lsp, C++) [gi] switch source/header", noremap = true, buffer = bufnr }
             )
         end
 
         -- LSP actions
-        map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, args.buf, "(lsp) [c]ode [a]ction")
-        map('n', '<leader>rn', vim.lsp.buf.rename, args.buf, "(lsp) [r]e[n]ame")
-        map('n', 'gk', function() vim.lsp.buf.hover { border = "rounded" } end, args.buf, "(lsp) [K]hover doc")
+        map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, bufnr, "(lsp) [c]ode [a]ction")
+        map('n', '<leader>rn', vim.lsp.buf.rename, bufnr, "(lsp) [r]e[n]ame")
+        map('n', 'K', function() vim.lsp.buf.hover { border = "rounded" } end, bufnr, "(lsp) [K]hover doc")
 
-        map('n', 'gd', vim.lsp.buf.definition, args.buf, "(lsp) [g]o [d]efinition")
-        map('n', 'gD', vim.lsp.buf.declaration, args.buf, "(lsp) [g]oto [D]eclaration")
-        map('n', 'go', vim.lsp.buf.type_definition, args.buf, "(lsp) [go] type definition")
-        map('n', 'gr', function() vim.cmd.Telescope { args = { 'lsp_references' } } end, args.buf,
+        map('n', 'gd', vim.lsp.buf.definition, bufnr, "(lsp) [g]o [d]efinition")
+        map('n', 'gD', vim.lsp.buf.declaration, bufnr, "(lsp) [g]oto [D]eclaration")
+        map('n', 'go', vim.lsp.buf.type_definition, bufnr, "(lsp) [go] type definition")
+        map('n', 'gr', function() vim.cmd.Telescope { args = { 'lsp_references' } } end, bufnr,
             "(lsp) [g]oto [r]eferences")
-        -- map('n', '<C-k>', vim.lsp.buf.signature_help, args.buf, "(lsp) [<C-k>] signature help")
+        -- map('n', '<C-k>', vim.lsp.buf.signature_help, bufnr, "(lsp) [<C-k>] signature help")
 
         -- Diagnostics
-        map('n', 'gl', vim.diagnostic.open_float, args.buf, "(lsp) [gl]ine diagnostics")
-        map('n', '<C-[>', function() vim.diagnostic.jump { count = -1, float = true } end, args.buf,
-            "(lsp) [gk] diagnostic jump previous")
-        map('n', '<C-]>', function() vim.diagnostic.jump { count = 1, float = true } end, args.buf,
-            "(lsp) [gj] diagnostic jump next")
+        map('n', 'gl', vim.diagnostic.open_float, bufnr, "(lsp) [gl]ine diagnostics")
+
+        local repeat_move = require("repeatable_move")
+        local next_diag = function()
+            vim.diagnostic.jump({ count = 1, float = true })
+        end
+        local prev_diag = function()
+            vim.diagnostic.jump({ count = -1, float = true })
+        end
+
+        next_diag, prev_diag = repeat_move.make_repeatable_move_pair(next_diag, prev_diag)
+
+        map('n', 'gj', next_diag, bufnr, "(lsp) diagnostic jump next")
+        map('n', 'gk', prev_diag, bufnr, "(lsp) diagnostic jump previous")
 
         -- Formatting
-        map('n', 'gm', vim.lsp.buf.format, args.buf, "(lsp) [g]o for[m]at")
+        map('n', 'gm', vim.lsp.buf.format, bufnr, "(lsp) [g]o for[m]at")
 
         -- if client.supports_method(client, "inlayHintProvider") then
-        --     vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+        --     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         -- end
     end
 })
