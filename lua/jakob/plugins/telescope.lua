@@ -1,6 +1,12 @@
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 
+-- Custom action: select the item and center the cursor on the screen
+local select_and_center = function(prompt_bufnr)
+    actions.select_default(prompt_bufnr)
+    vim.cmd("normal! zz")
+end
+
 return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -19,6 +25,10 @@ return {
                     ["<C-j>"] = actions.move_selection_next,
                     ["<C-k>"] = actions.move_selection_previous,
                     ["<C-a>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                    ["<CR>"]  = select_and_center, -- Overrides default enter in insert mode
+                },
+                n = {
+                    ["<CR>"] = select_and_center, -- Overrides default enter in normal mode
                 }
             },
             path_display = { "filename_first" }
