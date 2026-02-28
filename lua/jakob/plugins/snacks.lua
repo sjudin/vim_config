@@ -14,6 +14,7 @@ return {
                 -- Centers the floating window relative to the entire editor
                 relative = "editor",
                 position = "float",
+                row = 0.3,
 
                 -- Snacks.input natively enters insert mode when opened.
                 -- We use the 'on_buf' callback to intercept it and stop insert mode.
@@ -29,6 +30,19 @@ return {
             enabled = true,
             -- This explicitly tells Snacks to hijack vim.ui.select
             ui_select = true,
-        }
+        },
+        words = {
+            enabled = true,
+            debounce = 100, -- time in ms to wait before updating
+        },
+        indent = {
+            enabled = true,
+            animate = { enabled = false },
+            scope = { enabled = false }
+        },
+        zen = { show = { statusline = false } },
+    },
+    keys = {
+        { "<leader>z", mode = { "n" }, function() Snacks.zen() end, desc = "Toggle Zen Mode" }
     }
 }

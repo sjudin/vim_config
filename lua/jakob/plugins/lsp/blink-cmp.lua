@@ -10,6 +10,10 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+        signature = {
+            enabled = true,
+            window = { border = 'single' }
+        },
         cmdline = {
             enabled = true,
             keymap = {
@@ -65,12 +69,21 @@ return {
             end
         },
         keymap = {
-            preset = 'default',
+            preset = 'none',
             ['<C-j>'] = { 'select_next' },
             ['<C-k>'] = { 'select_prev' },
             ['<Tab>'] = { 'snippet_forward', 'fallback' },
             ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
-            ['<Enter>'] = { 'accept', 'fallback' },
+            ['<Enter>'] = {
+                function(cmp)
+                    if cmp.accept() then
+                        cmp.show_signature()
+                        return true
+                    end
+                end
+            , 'fallback' },
+            ['<Up>'] = { 'select_prev', 'fallback' },
+            ['<Down>'] = { 'select_next', 'fallback' },
         },
 
         appearance = {
