@@ -12,20 +12,17 @@ end
 
 return {
     'stevearc/oil.nvim',
-    opts = {},
-    -- Optional dependencies
+    lazy = false,
+    opts = {
+        keymaps = {
+            ["q"] = "actions.close",
+        },
+        win_options = {
+            winbar = "%!v:lua.get_oil_winbar()",
+        },
+    },
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-        require("oil").setup(
-            {
-                keymaps = {
-                    ["q"] = "actions.close",
-                },
-                win_options = {
-                    winbar = "%!v:lua.get_oil_winbar()",
-                },
-            }
-        )
-        vim.keymap.set("n", "-", require("oil").open_float, { desc = "Open parent directory" })
-    end
+    keys = {
+        { "-", mode = { "n" }, function() require("oil").open_float() end, desc = "Open parent directory" },
+    }
 }
