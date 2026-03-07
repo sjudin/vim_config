@@ -50,8 +50,9 @@ return {
                     {
                         "mode",
                         fmt = function(str)
-                            local fwidth = 9
-                            return string.format('%' .. fwidth .. 's', str)
+                            -- Get the first character of the mode, ie I for insert,
+                            -- N for normal etc
+                            return string.sub(str, 1, 1)
                         end
                     }
                 },
