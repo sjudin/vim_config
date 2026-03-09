@@ -18,7 +18,8 @@ return {
     'nvim-mini/mini.starter',
     dependencies = {
         "folke/persistence.nvim",
-        'nvim-telescope/telescope.nvim'
+        'nvim-telescope/telescope.nvim',
+        'stevearc/oil.nvim'
     },
     version = false,
     config = function()
@@ -56,6 +57,8 @@ return {
                     local builtin = require('telescope.builtin')
                     vim.keymap.set('n', '<C-p>', builtin.git_files,
                         { buffer = true, desc = "(Telescope) <C-p> Git files" })
+                    vim.keymap.set('n', '-', function() require("oil").open_float() end,
+                        { buffer = true, desc = "Open parent directory" })
 
                     -- Normal buffer movement gets overridden but we can use <C-*> variants
                     vim.keymap.set('n', '<C-j>', function() starter.update_current_item('next') end, { buffer = true })
