@@ -4,6 +4,9 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+vim.keymap.set("n", "}", "}zzzv")
+vim.keymap.set("n", "{", "{zzzv")
+
 -- undo breakpoints
 vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", "?", "?<c-g>u")
