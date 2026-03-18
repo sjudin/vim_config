@@ -14,40 +14,45 @@ return {
         })
 
         local move = require("nvim-treesitter-textobjects.move")
+        local select = require("nvim-treesitter-textobjects.select")
         local modes = { "n", "x", "o" }
+        local set = vim.keymap.set
 
-        vim.keymap.set(modes, "]}", function()
+        set({ "x", "o" }, "iP", function() select.select_textobject("@parameter.inner", "textobjects") end)
+        set({ "x", "o" }, "aP", function() select.select_textobject("@parameter.outer", "textobjects") end)
+
+        set(modes, "]}", function()
             move.goto_next_start("@function.outer", "textobjects")
         end, { desc = "Next class/function start" })
 
-        vim.keymap.set(modes, "[{", function()
+        set(modes, "[{", function()
             move.goto_previous_start("@function.outer", "textobjects")
         end, { desc = "Previous class/function start" })
 
 
         local ts_repeat_move = require "nvim-treesitter-textobjects.repeatable_move"
         -- vim way: ; goes to the direction you were moving.
-        vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-        vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+        set(modes, ";", ts_repeat_move.repeat_last_move)
+        set(modes, ",", ts_repeat_move.repeat_last_move_opposite)
 
         local eyeliner = require("eyeliner")
 
-        vim.keymap.set({ "n", "x", "o" }, "f", function()
+        set(modes, "f", function()
             eyeliner.highlight({ forward = true })
             return ts_repeat_move.builtin_f_expr()
         end, { expr = true })
 
-        vim.keymap.set({ "n", "x", "o" }, "F", function()
+        set(modes, "F", function()
             eyeliner.highlight({ forward = false })
             return ts_repeat_move.builtin_F_expr()
         end, { expr = true })
 
-        vim.keymap.set({ "n", "x", "o" }, "t", function()
+        set(modes, "t", function()
             eyeliner.highlight({ forward = true })
             return ts_repeat_move.builtin_t_expr()
         end, { expr = true })
 
-        vim.keymap.set({ "n", "x", "o" }, "T", function()
+        set(modes, "T", function()
             eyeliner.highlight({ forward = false })
             return ts_repeat_move.builtin_T_expr()
         end, { expr = true })
