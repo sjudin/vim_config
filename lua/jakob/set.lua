@@ -61,4 +61,4 @@ vim.o.laststatus = 3
 vim.o.cursorline = true
 vim.o.cursorcolumn = false
 
-vim.o.clipboard = "unnamedplus"
+vim.g.clipboard = "osc52"
