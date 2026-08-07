@@ -18,6 +18,13 @@ if color == "gruvbox" or color == "gruvbox-material" then
 end
 if color == "gruvbox-material" then
     vim.g.gruvbox_material_foreground = "original"
+    vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = function()
+            vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#d8a657", bg = "NONE", bold = true })
+
+        end,
+    })
 end
 
 if color == "catppuccin" then
@@ -65,7 +72,7 @@ autocmd('WinEnter',
         group = bg_highlight,
         pattern = "*",
         callback = function()
-            vim.opt.colorcolumn = "80"
+            vim.opt.cursorline = true
         end
     })
 
@@ -74,7 +81,7 @@ autocmd('WinLeave',
         group = bg_highlight,
         pattern = "*",
         callback = function()
-            vim.opt.colorcolumn = "0"
+            vim.opt.cursorline = false
         end
     })
 

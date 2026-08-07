@@ -32,7 +32,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = "80"
 
 -- always keep 8 lines when scrolling
 vim.opt.scrolloff = 8
@@ -60,5 +59,6 @@ vim.o.laststatus = 3
 -- show cursorcolumn
 vim.o.cursorline = true
 vim.o.cursorcolumn = false
+vim.o.cursorlineopt = 'number'
 
 vim.g.clipboard = "osc52"

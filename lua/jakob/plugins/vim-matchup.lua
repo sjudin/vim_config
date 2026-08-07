@@ -1,7 +1,9 @@
 -- Better "%" matching
 return {
     'andymass/vim-matchup',
-    config = function()
+    ---@type matchup.Config
+    init = function()
         vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,
+    opts = {}
 }
