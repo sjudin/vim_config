@@ -5,10 +5,21 @@ return {
         'neovim/nvim-lspconfig',
     },
     opts = {
-        ensure_installed = { "clangd", "efm", "pyright", "cmake", "lua_ls", "jsonls", "bashls" },
-        -- Handle pyright on its own since we want to launch pylance instead of pyright if it is available
+        ensure_installed = {
+            "clangd",
+            "efm",
+            "pyrefly",
+            "pyright",
+            "ruff",
+            "cmake",
+            "lua_ls",
+            "jsonls",
+            "bashls",
+        },
+        -- Python servers are selected explicitly in jakob.lsp so the toggle can
+        -- choose one stack without Mason enabling the other one as well.
         automatic_enable = {
-            exclude = { "pyright" }
+            exclude = { "pyrefly", "pyright", "ruff" }
         }
     }
 }

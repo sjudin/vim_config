@@ -21,7 +21,11 @@ local map = function(m, lhs, rhs, bufnr, desc)
     vim.keymap.set(m, lhs, rhs, key_opts)
 end
 
-if pylance_available() then
+vim.lsp.enable("ruff")
+
+if vim.g.python_use_pyrefly_ruff then
+    vim.lsp.enable("pyrefly")
+elseif pylance_available() then
     vim.lsp.enable("pylance")
 else
     vim.lsp.enable("pyright")
@@ -32,6 +36,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         local bufnr = args.buf
         -- print(string.format("Attaching %s to buffer %d", client.name, bufnr))
+
+        -- Pyrefly provides richer hover information. Keep Ruff focused on
+        -- linting, code actions, and formatting when both servers are active.
+        if client ~= nil and client.name == "ruff" then
+            client.server_capabilities.hoverProvider = false
+        end
 
         -- For C++ files we want "gi" to use the clangd functionality to switch
         -- between source and header files.

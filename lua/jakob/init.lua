@@ -1,3 +1,7 @@
+-- Set to false to use Pylance (when available) or Pyright instead of Pyrefly.
+-- Ruff remains enabled for linting and formatting in either mode.
+vim.g.python_use_pyrefly_ruff = true
+
 require("jakob.set")
 require("jakob.remap")
 require("jakob.lazy")
