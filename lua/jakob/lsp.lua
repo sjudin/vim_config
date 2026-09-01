@@ -3,6 +3,13 @@
 
 require('jakob.misc.lsp-progress')
 
+-- Advertise Blink's completion capabilities to every language server. This is
+-- required for neocmakelsp, which only provides completions to clients that
+-- support snippets.
+vim.lsp.config('*', {
+    capabilities = require('blink.cmp').get_lsp_capabilities({}, true),
+})
+
 vim.diagnostic.config({
     float = { border = 'rounded' },
     virtual_text = false,

@@ -11,15 +11,16 @@ return {
             "pyrefly",
             "pyright",
             "ruff",
-            "cmake",
+            "neocmake",
             "lua_ls",
             "jsonls",
             "bashls",
         },
         -- Python servers are selected explicitly in jakob.lsp so the toggle can
         -- choose one stack without Mason enabling the other one as well.
+        -- Keep the legacy CMake server disabled if it is still installed.
         automatic_enable = {
-            exclude = { "pyrefly", "pyright", "ruff" }
+            exclude = { "pyrefly", "pyright", "ruff", "cmake" }
         }
     }
 }
