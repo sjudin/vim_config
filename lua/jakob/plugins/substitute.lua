@@ -1,6 +1,5 @@
 return {
     "gbprod/substitute.nvim",
-    -- dependencies = { "gbprod/yanky.nvim" },
     opts = {
         highlight_substituted_text = {
             enabled = false,
@@ -21,7 +20,6 @@ return {
     },
 
     config = function(_, opts)
-        opts["on_substitute"] = require("yanky.integration").substitute()
         require('substitute').setup(opts)
 
         local exchange = require('substitute.exchange')

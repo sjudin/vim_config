@@ -61,4 +61,16 @@ vim.o.cursorline = true
 vim.o.cursorcolumn = false
 vim.o.cursorlineopt = 'number'
 
-vim.g.clipboard = "osc52"
+vim.g.clipboard = {
+    name = "OSC 52 copy, Wayland paste",
+    copy = {
+        ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+        ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+        ["+"] = { "wl-paste", "--no-newline" },
+        ["*"] = { "wl-paste", "--primary", "--no-newline" },
+    },
+}
+
+require("vim._core.ui2").enable({ enable = true })
