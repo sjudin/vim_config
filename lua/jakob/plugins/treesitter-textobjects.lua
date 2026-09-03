@@ -21,13 +21,14 @@ return {
         set({ "x", "o" }, "iP", function() select.select_textobject("@parameter.inner", "textobjects") end)
         set({ "x", "o" }, "aP", function() select.select_textobject("@parameter.outer", "textobjects") end)
 
-        set(modes, "{}", function()
+        -- Only have an option to go down, use , and ; to move forwards and backwards
+        set(modes, "]]", function()
             move.goto_next_start("@function.outer", "textobjects")
         end, { desc = "Next class/function start" })
 
-        set(modes, "}{", function()
-            move.goto_previous_start("@function.outer", "textobjects")
-        end, { desc = "Previous class/function start" })
+        -- set(modes, "]}", function()
+        --     move.goto_previous_start("@function.outer", "textobjects")
+        -- end, { desc = "Previous class/function start" })
 
 
         local ts_repeat_move = require "nvim-treesitter-textobjects.repeatable_move"
