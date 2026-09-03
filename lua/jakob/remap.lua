@@ -54,3 +54,10 @@ vim.keymap.set('n', '<C-s><{', [[:.s/<\(.*\)>/{\1}/c<CR>]])
 
 -- Duplicate current line below and comment out
 vim.keymap.set("n", "ycc", "yygccp", { remap = true })
+
+-- Start selection in Normal mode with <CR>
+vim.keymap.set("n", "<CR>", "van", { remap = true, desc = "Init selection" })
+-- Expand selection (node incremental) with <CR>
+vim.keymap.set("x", "<CR>", "an", { remap = true, desc = "Increment selection" })
+-- Shrink selection (node decremental) with <BS>
+vim.keymap.set("x", "<BS>", "in", { remap = true, desc = "Decrement selection" })
