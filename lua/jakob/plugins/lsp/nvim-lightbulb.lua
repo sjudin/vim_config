@@ -2,7 +2,7 @@ return {
     -- Code action lightbulb
     'kosayoda/nvim-lightbulb',
     opts = {
-        autocmd = { enabled = true, updatetime = 10 },
+        autocmd = { enabled = true, updatetime = -1 },
         sign = { enabled = false },
         virtual_text = {
             enabled = true,

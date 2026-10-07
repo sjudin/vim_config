@@ -52,6 +52,10 @@ return {
             },
         },
     },
+    config = function(_, opts)
+        require('telescope').setup(opts)
+        require('telescope').load_extension('fzf')
+    end,
     keys = {
         { "<leader>ff", builtin.find_files,   desc = "(Telescope) [f]ind [f]iles" },
         { "<leader>fw", builtin.live_grep,    desc = "(Telescope) [f]ind [w]ord" },

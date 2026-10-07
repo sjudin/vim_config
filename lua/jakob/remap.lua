@@ -35,23 +35,6 @@ vim.keymap.set('v', '<C-s>w', ':s//gc<Left><Left><Left>')
 vim.keymap.set('n', '(', ':b#<CR>zz', { silent = true })
 vim.keymap.set('n', ')', ':b#<CR>zz', { silent = true })
 
--- Switch between paren/curly/straight etc
-vim.keymap.set('n', '<C-s>({', [[:.s/(\(.*\))/{\1}/c<CR>]])
-vim.keymap.set('n', '<C-s>([', [[:.s/(\(.*\))/[\1]/c<CR>]])
-vim.keymap.set('n', '<C-s>(<', [[:.s/(\(.*\))/<\1>/c<CR>]])
-
-vim.keymap.set('n', '<C-s>[{', [[:.s/\[\(.*\)\]/{\1}/c<CR>]])
-vim.keymap.set('n', '<C-s>[(', [[:.s/\[\(.*\)\]/(\1)/c<CR>]])
-vim.keymap.set('n', '<C-s>[<', [[:.s/\[\(.*\)\]/<\1>/c<CR>]])
-
-vim.keymap.set('n', '<C-s>{[', [[:.s/{\(.*\)}/[\1]/c<CR>]])
-vim.keymap.set('n', '<C-s>{(', [[:.s/{\(.*\)}/(\1)/c<CR>]])
-vim.keymap.set('n', '<C-s>{<', [[:.s/{\(.*\)}/<\1>/c<CR>]])
-
-vim.keymap.set('n', '<C-s><[', [[:.s/<\(.*\)>/[\1]/c<CR>]])
-vim.keymap.set('n', '<C-s><(', [[:.s/<\(.*\)>/(\1)/c<CR>]])
-vim.keymap.set('n', '<C-s><{', [[:.s/<\(.*\)>/{\1}/c<CR>]])
-
 -- Duplicate current line below and comment out
 vim.keymap.set("n", "ycc", "yygccp", { remap = true })
 

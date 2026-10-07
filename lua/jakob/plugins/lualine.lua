@@ -20,19 +20,16 @@ return {
         }
 
         local function get_attached_lsp()
-            local msg = 'No Active Lsp'
-            local buf_ft = vim.bo.filetype
-            local clients = vim.lsp.get_clients()
-            if next(clients) == nil then
-                return msg
+            local clients = vim.lsp.get_clients({ bufnr = 0 })
+            if #clients == 0 then
+                return 'No Active Lsp'
             end
+            local names = {}
             for _, client in ipairs(clients) do
-                local filetypes = client.config.filetypes
-                if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                    return " LSP: " .. client.name
-                end
+                names[#names + 1] = client.name
             end
-            return msg
+            table.sort(names)
+            return " LSP: " .. table.concat(names, ', ')
         end
 
 
