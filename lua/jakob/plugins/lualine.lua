@@ -1,5 +1,6 @@
 return {
-    'nvim-lualine/lualine.nvim',
+    'sjudin/lualine.nvim',
+    branch = 'fix/event-driven-refresh',
     enabled = true,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
